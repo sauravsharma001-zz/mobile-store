@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -7,12 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  isLoggedIn = true;
-  error = true;
-  loginErrorMessage = "Invalid username or password";
-  constructor() { }
+  name: any;
+  isLoggedIn: boolean;
+  loginErrorMessage: any;
+  token: any;
+  selectedTab: any;
+
+  constructor( private user: AuthenticationService, private router: Router) { }
 
   ngOnInit() {
+    this.selectedTab = window.location.href.substring(window.location.href.lastIndexOf('/') + 1);
+    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    this.token = currentUser && currentUser.token;
+    this.name = currentUser && currentUser.name;
+    if (this.name != null && this.name !== undefined)  {
+      this.isLoggedIn = true;
+    }  else  {
+      this.isLoggedIn = false;
+    }
   }
 
   loginUser(e)  {
@@ -21,16 +35,30 @@ export class HeaderComponent implements OnInit {
     const password = e.target.elements[1].value;
     console.log("email", email);
     console.log("password", password);
-    this.isLoggedIn = true;
+    this.user.login(email, password)
+      .subscribe(result => {
+          if (result === true)  {
+            this.isLoggedIn = true;
+            const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+            this.token = currentUser && currentUser.token;
+            this.name = currentUser && currentUser.name;
+            this.router.navigate(['/']);
+          } else {
+            this.loginErrorMessage = 'Username or password is incorrect';
+            this.isLoggedIn = false;
+          }
+        },
+        error => {
+          this.loginErrorMessage = error.json().message;
+          this.isLoggedIn = false;
+        });
   }
 
   logoutUser(e) {
-    console.log("log out");
+    this.user.setUserLoggedIn(false, null);
     this.isLoggedIn = false;
-    // this.user.setUserLoggedIn(false, null);
-    // this.isLoggedIn = false;
-    // this.username = null;
-    // this.user.logout();
-    // this.router.navigate(['/']);
+    this.name = null;
+    this.user.logout();
+    this.router.navigate(['/']);
   }
 }

@@ -31,10 +31,11 @@
     <ul class="navbar-nav" *ngIf="isLoggedIn">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Profile
+          {{ name }}
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <a class="dropdown-item" href="/profile">My Account</a>
+          <a class="dropdown-item" href="/profile">My Orders</a>
           <a class="dropdown-item" (click)="logoutUser($event)">Logout</a>
         </div>
       </li>

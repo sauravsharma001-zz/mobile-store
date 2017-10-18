@@ -52,7 +52,12 @@ var userSchema = new mongoose.Schema({
     type: String
   },
   photo: String,
-  address: addressSchema
+  address: addressSchema,
+  userrole: {
+    type: String,
+    required: true,
+    default: 'customer'
+  }
 });
 
 mongoose.model("User", userSchema);

@@ -9,4 +9,12 @@ router
   .route("mobile")
   .get(ctrlUsers.authenticate, ctrlMobile.todoGetAll);
 
+router
+  .route("/users/login")
+  .post(ctrlUsers.login);
+
+router
+  .route("/users/register")
+  .post(ctrlUsers.register);
+
 module.exports = router;
