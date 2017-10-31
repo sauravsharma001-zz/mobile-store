@@ -17,4 +17,8 @@ router
   .route("/users/register")
   .post(ctrlUsers.register);
 
+router
+  .route("/users/emailcheck")
+  .post(ctrlUsers.emailcheck);
+
 module.exports = router;

@@ -4,7 +4,7 @@ var jwt = require("jsonwebtoken");
 var User = mongoose.model("User");
 
 module.exports.register = function(req, res)  {
-
+  res.status(200).json({"success":true});
 };
 
 module.exports.authenticate = function(req, res, next)  {
@@ -68,4 +68,8 @@ module.exports.login = function(req, res) {
         .json({"message": "Unauthorized"});
     }
   });
+};
+
+module.exports.emailcheck = function(req, res)  {
+
 };

@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
-//var dburl = "mongodb://root:root@localhost:27017/mobilestore?authMechanism=DEFAULT&authSource=admin";
-var dburl = "mongodb://root:root@localhost:27017/todo?authMechanism=DEFAULT&authSource=admin";
+var dburl = "mongodb://localhost:27017/mobilestore";
+//var dburl = "mongodb://root:root@localhost:27017/todo?authMechanism=DEFAULT&authSource=admin";
 
 mongoose.connect(dburl);
 
