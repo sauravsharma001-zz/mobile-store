@@ -1,0 +1,496 @@
+{
+	"name":"Apple iPhone X",
+	"brand": "Apple",
+	"os": "iOS 11.1",
+	"display":  {
+		"size": 5.8,
+		"resolution":  "1125 X 2436"
+	},
+	"cpu": "Apple A11 Bionic",
+	"gpu": "Apple GPU",
+	"memory":	{
+		"ram": 3,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		},
+		{
+			"imagesensor": 12,
+			"focallength": "f/2.4",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 7,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2716,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 999,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Apple iPhone 8",
+	"brand": "Apple",
+	"os": "iOS 11.1",
+	"display":  {
+		"size": 4.7,
+		"resolution":  "750 X 1334"
+	},
+	"cpu": "Apple A11 Bionic",
+	"gpu": "Apple GPU",
+	"memory":	{
+		"ram": 2,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 7,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 1821,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 699,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Apple iPhone 8 Plus",
+	"brand": "Apple",
+	"os": "iOS 11.1",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu": "Apple A11 Bionic",
+	"gpu": "Apple GPU",
+	"memory":	{
+		"ram": 3,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		},
+		{
+			"imagesensor": 12,
+			"focallength": "f/2.8",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 7,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2691,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 799,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Apple iPhone 7 Plus",
+	"brand": "Apple",
+	"os": "iOS 11.1",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu": "Apple A10 Fusion",
+	"gpu": "Apple GPU",
+	"memory":	{
+		"ram": 3,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		},
+		{
+			"imagesensor": 12,
+			"focallength": "f/2.8",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 7,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2900,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 669,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Apple iPhone 7",
+	"brand": "Apple",
+	"os": "iOS 11.1",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu": "Apple A10 Fusion",
+	"gpu": "Apple GPU",
+	"memory":	{
+		"ram": 2,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 7,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 1960,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 549,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Samsung Galaxy S8",
+	"brand": "Samsung",
+	"os": "Android 7",
+	"display":  {
+		"size": 5.8,
+		"resolution":  "1440 X 2960"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 725,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Samsung Galaxy Note8",
+	"brand": "Samsung",
+	"os": "Android 7.1.1",
+	"display":  {
+		"size": 6.3,
+		"resolution":  "1440 X 2960"
+	},
+	"cpu": "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 6,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		},
+		{
+			"imagesensor": 12,
+			"focallength": "f/2.4",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3300,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 850,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Razer Phone",
+	"brand": "Razer",
+	"os": "Android 7.1",
+	"display":  {
+		"size": 5.7,
+		"resolution":  "1440 X 2560"
+	},
+	"cpu": "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 8,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.75",
+			"unit": "MP"
+		},
+		{
+			"imagesensor": 13,
+			"focallength": "f/2.6",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 4000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 700,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Essential PH-1",
+	"brand": "Essential",
+	"os": "Android 7.1",
+	"display":  {
+		"size": 5.71,
+		"resolution":  "1312 X 2560"
+	},
+	"cpu": "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 13,
+			"focallength": "f/1.9",
+			"unit": "MP"
+		},
+		{
+			"imagesensor": 13,
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3040,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 499,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+}
+{
+	"name":"Google Pixel 2",
+	"brand": "Google",
+	"os": "Android 8.0",
+	"display":  {
+		"size": 5.0,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu": "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12.2,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/2.4",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2700,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 649,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+}
+{
+	"name":"Google Pixel 2 XL",
+	"brand": "Google",
+	"os": "Android 8.0",
+	"display":  {
+		"size": 6.0,
+		"resolution":  "1440 X 2880"
+	},
+	"cpu": "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12.2,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/2.4",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3520,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 849,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+}
+{
+	"name":"Google Pixel",
+	"brand": "Google",
+	"os": "Android 8.0",
+	"display":  {
+		"size": 5.0,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu": "Qualcomm MSM8996 Snapdragon 821",
+	"gpu": "Adreno 530",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12.3,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/2.4",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2770,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 549,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+}
+{
+	"name":"Google Pixel XL",
+	"brand": "Google",
+	"os": "Android 8.0",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1440 X 2560"
+	},
+	"cpu": "Qualcomm MSM8996 Snapdragon 821",
+	"gpu": "Adreno 530",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12.3,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/2.4",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3450,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 669,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+}

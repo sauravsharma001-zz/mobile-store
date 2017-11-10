@@ -1,0 +1,44 @@
+<form>
+  <div class="form-group">
+    <div class="form-group">
+       <label for="exampleInputFile">File input</label>
+       <input type="file" class="form-control-file" id="mobileImage" name="mobileImage" aria-describedby="fileHelp">
+       <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" (click)="upload($event)" >Submit</button>
+</form>
+<div id="mobileList" class="container">
+  <div class="well well-sm">
+      <strong>Mobile</strong>
+      <div class="btn-group">
+          <a id="list" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-th-list"></span>List
+          </a>
+          <a id="grid" class="btn btn-default btn-sm">
+            <span class="glyphicon glyphicon-th"></span>Grid
+          </a>
+      </div>
+  </div>
+  <div id="mobiles" class="row list-group">
+      <div *ngFor="let mobile of mobileList" class="item grid-group-item col-xs-4 col-lg-4">
+          <div class="thumbnail">
+              <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="{{mobile.name}}" />
+              <div class="caption">
+                      <a href="mobile/{{mobile._id}}" class="a-link-normal" title="{{mobile.name}}">
+                        <h2 class="a-size-base s-inline  s-access-title  a-text-normal">{{ mobile.name }}</h2>
+                      </a>
+                      <span class="a-size-small a-color-secondary">by {{mobile.brand}}</span>
+                  <div class="row">
+                      <div class="col-xs-12 col-md-6">
+                          <p class="lead">{{ mobile.price.unit }} {{ mobile.price.value }}</p>
+                      </div>
+                      <div class="col-xs-12 col-md-6">
+                          <a class="btn btn-success">Add to cart</a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

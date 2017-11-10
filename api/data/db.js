@@ -1,6 +1,6 @@
 var mongoose = require("mongoose");
-var dburl = "mongodb://localhost:27017/mobilestore";
-//var dburl = "mongodb://root:root@localhost:27017/todo?authMechanism=DEFAULT&authSource=admin";
+//var dburl = "mongodb://localhost:27017/mobilestore";
+var dburl = "mongodb://root:root@localhost:27017/mobilestore?authMechanism=DEFAULT&authSource=admin";
 
 mongoose.connect(dburl);
 
@@ -44,3 +44,4 @@ process.once("SIGUSR2", function () {
 require("./mobile.model.js");
 require("./userorderdetail.model.js");
 require("./user.model.js");
+require("./test.model.js");

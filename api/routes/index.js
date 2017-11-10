@@ -5,9 +5,24 @@ var ctrlMobile = require("../controllers/mobile.controller.js");
 var ctrlUsers = require("../controllers/user.controller.js");
 var ctrlUserOrderDetails = require("../controllers/userorderdetail.controller.js");
 
+
+// Testing
 router
-  .route("mobile")
-  .get(ctrlUsers.authenticate, ctrlMobile.todoGetAll);
+  .route("/test")
+  .post(ctrlMobile.test);
+
+// Routes related to Mobile
+router
+  .route("/mobiles")
+  .get(ctrlMobile.mobileGetAll)
+  .post(ctrlMobile.mobileAddOne);
+
+router
+  .route("/mobiles/:mobileId")
+  .get(ctrlMobile.mobileGetOne)
+  .post(ctrlMobile.mobileUpdateOne)
+  .delete(ctrlMobile.mobileDeleteOne)
+  //.delete(ctrlUsers.authenticate, ctrlMobile.mobileDeleteOne);
 
 router
   .route("/users/login")

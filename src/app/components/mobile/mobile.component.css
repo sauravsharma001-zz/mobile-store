@@ -1,0 +1,41 @@
+#mobileMainDiv{
+  max-width: 90%;
+  padding-left: 5%;
+}
+#filter {
+  float: left;
+  position: relative;
+  z-index: 2;
+  width: 200px;
+  box-sizing: border-box;
+  border-right: 1px solid #DDD;
+  padding: 6px 6px 20px 10px;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+#filter h3, #filter h4 {
+  padding: 2%;
+}
+.mobile {
+  padding-top: 5%;
+  padding-left: 15%;
+}
+.a-text-bold {
+    font-weight: 700!important;
+}
+.a-size-small {
+    font-size: 13px!important;
+    line-height: 15px!important;
+}
+.a-spacing-mini, .a-ws .a-ws-spacing-mini {
+    margin-bottom: 5px!important;
+}
+.a-color-base {
+  color: #002F36!important;
+}
+.a-size-base  {
+  font-size: 1.3em;
+}
+ul  {
+  list-style-type: none
+}

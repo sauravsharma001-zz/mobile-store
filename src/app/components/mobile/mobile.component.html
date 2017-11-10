@@ -1,3 +1,162 @@
-<p>
-  mobile works!
-</p>
+<div id="mobileMainDiv">
+    <div id="filter">
+        <h3 class="a-size-medium a-spacing-base a-spacing-top-base a-color-tertiary a-text-normal">Filter by</h3>
+        <h4 class="a-size-small a-spacing-mini a-color-base a-text-bold">Operating System</h4>
+        <ul>
+            <li>
+              <input type="checkbox" [(ngModel)]="filterCond.os.android" name="os" value="Android" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Android</span>
+            </li>
+            <li>
+              <input type="checkbox" name="os" [(ngModel)]="filterCond.os.iOS" value="iOS" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">iOS</span>
+            </li>
+        </ul>
+
+        <h4 class="a-size-small a-spacing-mini a-color-base a-text-bold">Screen Size</h4>
+        <ul>
+            <li>
+              <input type="checkbox" name="screen" [(ngModel)]="filterCond.screen.under4" value="under4" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Below 4 in</span>
+            </li>
+            <li>
+              <input type="checkbox" name="screen" [(ngModel)]="filterCond.screen.fourtofive" value="4to5" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">4 To 4.9 in</span>
+            </li>
+            <li>
+              <input type="checkbox" name="screen" [(ngModel)]="filterCond.screen.fivetosix" value="5to6" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">5 To 5.9 in</span>
+            </li>
+            <li>
+              <input type="checkbox" name="screen" [(ngModel)]="filterCond.screen.abovesix" value="above6" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Above 6 in</span>
+            </li>
+        </ul>
+
+        <h4 class="a-size-small a-spacing-mini a-color-base a-text-bold">Battery Capacity</h4>
+        <ul>
+            <li>
+              <input type="checkbox" name="battery" [(ngModel)]="filterCond.battery.undertwo" value="-2000" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Less Than 1999 mAh</span>
+            </li>
+            <li>
+              <input type="checkbox" name="battery" [(ngModel)]="filterCond.battery.twotothree" value="2000-3000" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">2000 - 2999 mAh</span>
+            </li>
+            <li>
+              <input type="checkbox" name="battery" [(ngModel)]="filterCond.battery.threetofour" value="3000-4000" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">3000 - 3999 mAh</span>
+            </li>
+            <li>
+              <input type="checkbox" name="battery" [(ngModel)]="filterCond.battery.abovefour" value="4000-" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">4000 mAh &amp; more</span>
+            </li>
+        </ul>
+
+        <h4 class="a-size-small a-spacing-mini a-color-base a-text-bold">Brand</h4>
+        <ul>
+            <li>
+              <input type="checkbox" name="brand" [(ngModel)]="filterCond.brand.apple" value="Apple" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Apple</span>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" [(ngModel)]="filterCond.brand.essential" value="Essential" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Essential</span>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" [(ngModel)]="filterCond.brand.google" value="Google" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Google</span>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" [(ngModel)]="filterCond.brand.htc" value="HTC" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">HTC</span>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" [(ngModel)]="filterCond.brand.lg" value="LG" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">LG</span>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" [(ngModel)]="filterCond.brand.motorola" value="Motorola" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Motorola</span>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" [(ngModel)]="filterCond.brand.razer" value="Razer" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Razer</span>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" [(ngModel)]="filterCond.brand.samsung" value="Samsung" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Samsung</span>
+            </li>
+            <li>
+              <input type="checkbox" name="brand" [(ngModel)]="filterCond.brand.sony" value="Sony" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base s-ref-text-link s-ref-link-cursor">Sony</span>
+            </li>
+        </ul>
+
+        <h4 class="a-size-small a-spacing-micro a-color-base a-text-bold">Price</h4>
+        <ul class="a-unordered-list a-nostyle a-vertical a-spacing-base">
+          <div aria-live="polite" class="a-row a-expander-container a-expander-extend-container">
+            <li>
+              <input type="checkbox" name="price" [(ngModel)]="filterCond.price.undertwo" value="-250" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base">Under $250</span>
+            </li>
+            <li>
+              <input type="checkbox" name="price" [(ngModel)]="filterCond.price.twotofive" value="250-500" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base">$250 - $499</span>
+            </li>
+            <li>
+              <input type="checkbox" name="price" [(ngModel)]="filterCond.price.fivetoseven" value="500-750" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base">$500 - $749</span>
+            </li>
+            <li>
+              <input type="checkbox" name="price" [(ngModel)]="filterCond.price.seventoten" value="750-1000" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base">$750 - $999</span>
+            </li>
+            <li>
+              <input type="checkbox" name="price" [(ngModel)]="filterCond.price.aboveten" value="1000-" (change)="filterResult()"/>
+              <span class="a-size-small a-color-base">Above $1000</span>
+            </li>
+          </div>
+      </ul>
+    </div>
+    <div id="mobileList" class="container">
+      <!-- <div class="well well-sm">
+          <strong>Mobile</strong>
+          <div class="btn-group">
+              <a id="list" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-th-list"></span>List
+              </a>
+              <a id="grid" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-th"></span>Grid
+              </a>
+          </div>
+      </div> -->
+      <div class="container">
+      	 <div class="row ">
+      		<div class="col-md-4 mobile" *ngFor="let mobile of mobileList">
+            <div class="thumbnail">
+              <div class="row">
+                <div class="col-md-4">
+                  <img src="http://placehold.it/200x300" alt="{{mobile.name}}">
+                </div>
+              </div>
+              <div class="caption">
+                <a href="mobile/{{mobile._id}}" class="a-link-normal" title="{{mobile.name}}">
+                  <h2 class="a-size-base s-inline  s-access-title  a-text-normal">{{ mobile.name }}</h2>
+                </a>
+                <span class="a-size-small a-color-secondary">by {{mobile.brand}}</span>
+              </div>
+              <div class="row">
+                <div class="col-xs-12 col-md-6">
+                    <p class="lead">$ {{ mobile.price.value }}</p>
+                </div>
+                <div class="col-xs-12 col-md-6">
+                    <a class="btn btn-success">Add to cart</a>
+                </div>
+              </div>
+            </div>
+          </div>
+      	</div>
+      </div>
+    </div>
+</div>

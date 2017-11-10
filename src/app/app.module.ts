@@ -17,6 +17,7 @@ import { MobileComponent } from './components/mobile/mobile.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { MobileService } from './services/mobile.service';
+import { AddmobileComponent } from './components/addmobile/addmobile.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { MobileService } from './services/mobile.service';
     LoginComponent,
     ProfileComponent,
     AboutComponent,
-    MobileComponent
+    MobileComponent,
+    AddmobileComponent
   ],
   imports: [
     BrowserModule,

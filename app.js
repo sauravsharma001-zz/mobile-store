@@ -5,24 +5,21 @@ var bodyParser = require("body-parser");
 var routes = require("./api/routes");
 var http = require("http");
 var app = express();
+var multer = require("multer");
+
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './img/')
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname)
+  }
+})
+
 
 // Defining the port to run on
 const port = process.env.PORT || 3000;
 app.set("port", port);
-
-// Enable parsing of posted forms
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false}));
-
-// Set static directory before defining routes
-app.use(express.static(path.join(__dirname, "dist")));
-app.use("/node_modules", express.static(__dirname + "/node_modules"));
-
-// Add middleware to console log every request
-app.use(function(req, res, next)  {
-  console.log(req.method, req.url);
-  next();
-});
 
 // To Allow CORS calls
 app.use(function(req, res, next) {
@@ -35,6 +32,23 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
   res.header('Access-Control-Allow-Credentials', true);
   return next();
+});
+
+// Enable parsing of posted forms
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false}));
+
+//Using Multer to upload the photo on the server side
+app.use(multer({storage: storage }).single('mobileImage'));
+
+// Set static directory before defining routes
+app.use(express.static(path.join(__dirname, "dist")));
+app.use("/node_modules", express.static(__dirname + "/node_modules"));
+
+// Add middleware to console log every request
+app.use(function(req, res, next)  {
+  console.log(req.method, req.url);
+  next();
 });
 
 // Add some routing
