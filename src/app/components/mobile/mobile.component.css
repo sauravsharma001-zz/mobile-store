@@ -39,3 +39,7 @@
 ul  {
   list-style-type: none
 }
+.mobilePic  {
+  width: 200px;
+  height: 200px;
+}

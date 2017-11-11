@@ -106,16 +106,22 @@ module.exports.mobileGetAll = function(req, res)  {
     .sort(sortCond)
     .skip(offset)
     .limit(count)
-    .exec(function(err, todoList) {
+    .exec(function(err, mobileList) {
       if(err) {
         res
           .status(500)
           .json(err);
       }
       else {
-        res
-          .status(200)
-          .json(todoList);
+
+        Mobile.count(filterCond, function(err, c) {
+          var response = {};
+          response.mobiles = mobileList;
+          response.totalCount = c;
+          res
+            .status(200)
+            .json(response);
+        });
       }
     });
 };

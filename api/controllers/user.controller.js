@@ -40,13 +40,12 @@ module.exports.login = function(req, res) {
     email: email
   }).exec(function(err, user)  {
     if(err) {
-      console.log(err);
+      console.log('err', err);
       res
         .status(400)
         .json(err);
     }
     else if(user != null || user != undefined){
-
        if(bcrypt.compareSync(password, user.password) ) {
         console.log("User found", user);
         var name = user.firstname + ' ' + user.lastname;

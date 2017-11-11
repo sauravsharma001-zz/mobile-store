@@ -230,6 +230,78 @@
   "isdeleted":  false
 },
 {
+	"name":"Samsung Galaxy S8 Plus",
+	"brand": "Samsung",
+	"os": "Android 7",
+	"display":  {
+		"size": 6.2,
+		"resolution":  "1440 X 2960"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3500,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 825,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Samsung Galaxy S8 Active",
+	"brand": "Samsung",
+	"os": "Android 7",
+	"display":  {
+		"size": 5.8,
+		"resolution":  "1440 X 2960"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 4000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 849,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
 	"name":"Samsung Galaxy Note8",
 	"brand": "Samsung",
 	"os": "Android 7.1.1",
@@ -349,7 +421,7 @@
 		"unit": "USD"
 	},
   "isdeleted":  false
-}
+},
 {
 	"name":"Google Pixel 2",
 	"brand": "Google",
@@ -385,7 +457,7 @@
 		"unit": "USD"
 	},
   "isdeleted":  false
-}
+},
 {
 	"name":"Google Pixel 2 XL",
 	"brand": "Google",
@@ -421,7 +493,7 @@
 		"unit": "USD"
 	},
   "isdeleted":  false
-}
+},
 {
 	"name":"Google Pixel",
 	"brand": "Google",
@@ -457,7 +529,7 @@
 		"unit": "USD"
 	},
   "isdeleted":  false
-}
+},
 {
 	"name":"Google Pixel XL",
 	"brand": "Google",
@@ -490,6 +562,676 @@
 	},
 	"price":  {
 		"value": 669,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"HTC U11",
+	"brand": "HTC",
+	"os": "Android 7.1",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1440 X 2560"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 16,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 649,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"HTC U11 Life",
+	"brand": "HTC",
+	"os": "Android 8",
+	"display":  {
+		"size": 5.2,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu":  "Qualcomm Snapdragon 630",
+	"gpu": "Adreno 508",
+	"memory":	{
+		"ram": 3,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 16,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 16,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2600,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 349,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"HTC One (M8)",
+	"brand": "HTC",
+	"os": "Android 6",
+	"display":  {
+		"size": 5.0,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 801",
+	"gpu": "Adreno 330",
+	"memory":	{
+		"ram": 2,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 4,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 5,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2600,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 139,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"HTC 10",
+	"brand": "HTC",
+	"os": "Android 7",
+	"display":  {
+		"size": 5.2,
+		"resolution":  "1440 X 2560"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 530",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 5,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 354,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Moto Z2 Force",
+	"brand": "Motorola",
+	"os": "Android 7.1.1",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1440 X 2560"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 530",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		},
+		{
+			"imagesensor": 12,
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 5,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2730,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 720,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Moto Z",
+	"brand": "Motorola",
+	"os": "Android 7.1.1",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1440 X 2560"
+	},
+	"cpu":  "Qualcomm MSM8996 Snapdragon 820",
+	"gpu": "Adreno 530",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 13,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 5,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2600,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 449,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Moto Z2 Play",
+	"brand": "Motorola",
+	"os": "Android 7.1.1",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu":  "Qualcomm MSM8953 Snapdragon 626",
+	"gpu": "Adreno 506",
+	"memory":	{
+		"ram": 3,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 5,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 408,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Moto X4",
+	"brand": "Motorola",
+	"os": "Android 7.1",
+	"display":  {
+		"size": 5.2,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu":  "Qualcomm Snapdragon 630",
+	"gpu": "Adreno 508",
+	"memory":	{
+		"ram": 3,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		},{
+			"imagesensor": 8,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 16,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 399,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Moto G5",
+	"brand": "Motorola",
+	"os": "Android 7",
+	"display":  {
+		"size": 5.0,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu":  "Qualcomm MSM8953 Snapdragon 625",
+	"gpu": "Adreno 506",
+	"memory":	{
+		"ram": 3,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 13,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		},{
+			"imagesensor": 13,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 279,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Moto G5 Plus",
+	"brand": "Motorola",
+	"os": "Android 7",
+	"display":  {
+		"size": 5.2,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu":  "Qualcomm MSM8953 Snapdragon 625",
+	"gpu": "Adreno 506",
+	"memory":	{
+		"ram": 3,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 12,
+			"focallength": "f/1.7",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 5,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 229,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Moto G4",
+	"brand": "Motorola",
+	"os": "Android 7.0",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu":  "Qualcomm MSM8952 Snapdragon 617",
+	"gpu": "Adreno 405",
+	"memory":	{
+		"ram": 2,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 13,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 5,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 179,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Xperia XZ1",
+	"brand": "Sony",
+	"os": "Android 8.0",
+	"display":  {
+		"size": 5.2,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 19,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 13,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2700,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 699,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Xperia XZ1 Compact",
+	"brand": "Sony",
+	"os": "Android 8.0",
+	"display":  {
+		"size": 4.6,
+		"resolution":  "720 X 1280"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 19,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 2700,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 599,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Xperia XZ Premium",
+	"brand": "Sony",
+	"os": "Android 8.0",
+	"display":  {
+		"size": 5.46,
+		"resolution":  "3840 X 2160"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 19,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 13,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3230,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 588,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"Xperia XA1 Plus",
+	"brand": "Sony",
+	"os": "Android 7.0",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1080 X 1920"
+	},
+	"cpu":  "Mediatek MT6757 Helio P20",
+	"gpu": "Mali-T880MP2",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 23,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 8,
+			"focallength": "f/2.0",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3430,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 379,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"LG V30",
+	"brand": "LG",
+	"os": "Android 7.1.2",
+	"display":  {
+		"size": 6.0,
+		"resolution":  "1440 X 2880"
+	},
+	"cpu":  "Qualcomm MSM8998 Snapdragon 835",
+	"gpu": "Adreno 540",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 16,
+			"focallength": "f/1.6",
+			"unit": "MP"
+		},
+		{
+			"imagesensor": 13,
+			"focallength": "f/1.9",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 5,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3300,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 799,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"LG Q6",
+	"brand": "LG",
+	"os": "Android 7.1.1",
+	"display":  {
+		"size": 5.5,
+		"resolution":  "1080 X 2160"
+	},
+	"cpu":  "Qualcomm MSM8940 Snapdragon 435",
+	"gpu": "Adreno 505",
+	"memory":	{
+		"ram": 3,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 13,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 5,
+			"focallength": "f/2.2",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3000,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 299,
+		"unit": "USD"
+	},
+  "isdeleted":  false
+},
+{
+	"name":"LG V20",
+	"brand": "LG",
+	"os": "Android 7.1.2",
+	"display":  {
+		"size": 5.7,
+		"resolution":  "1440 X 2560"
+	},
+	"cpu":  "Qualcomm MSM8996 Snapdragon 820",
+	"gpu": "Adreno 530",
+	"memory":	{
+		"ram": 4,
+		"unit": "GB"
+	},
+	"camera": {
+		"primary": [{
+			"imagesensor": 16,
+			"focallength": "f/1.8",
+			"unit": "MP"
+		},
+		{
+			"imagesensor": 8,
+			"focallength": "f/2.4",
+			"unit": "MP"
+		}],
+		"secondary": {
+			"imagesensor": 5,
+			"focallength": "f/1.9",
+			"unit": "MP"
+		}
+	},
+	"battery": {
+		"power": 3200,
+		"unit":	"mAh"
+	},
+	"price":  {
+		"value": 299,
 		"unit": "USD"
 	},
   "isdeleted":  false

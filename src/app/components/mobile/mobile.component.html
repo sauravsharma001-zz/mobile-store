@@ -120,24 +120,28 @@
       </ul>
     </div>
     <div id="mobileList" class="container">
-      <!-- <div class="well well-sm">
-          <strong>Mobile</strong>
-          <div class="btn-group">
-              <a id="list" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-th-list"></span>List
-              </a>
-              <a id="grid" class="btn btn-default btn-sm">
-                <span class="glyphicon glyphicon-th"></span>Grid
-              </a>
+      <div class="container">
+          <div class="row" style="padding-left: 15%;">
+            <!-- <strong>Mobile ({{totalMobileReturned}})</strong> -->
+              <h3 class="a-size-medium a-spacing-base a-spacing-top-base a-color-tertiary a-text-normal">Mobile ({{totalMobileReturned}})</h3>
+            <!-- <div class="btn-group">
+                <a id="list" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-th-list"></span>List
+                </a>
+                <a id="grid" class="btn btn-default btn-sm">
+                  <span class="glyphicon glyphicon-th"></span>Grid
+                </a>
+            </div> -->
           </div>
-      </div> -->
+      </div>
       <div class="container">
       	 <div class="row ">
       		<div class="col-md-4 mobile" *ngFor="let mobile of mobileList">
             <div class="thumbnail">
               <div class="row">
-                <div class="col-md-4">
-                  <img src="http://placehold.it/200x300" alt="{{mobile.name}}">
+                <div  class="col-md-4">
+                  <img *ngIf="mobile.image" class="mobilePic" src="assets/{{mobile.image}}" alt="{{mobile.name}}">
+                  <img *ngIf="!mobile.image" src="http://placehold.it/200x200" alt="{{mobile.name}}">
                 </div>
               </div>
               <div class="caption">

@@ -8,6 +8,7 @@ import { MobileService } from '../../services/mobile.service';
 })
 export class MobileComponent implements OnInit {
 
+  totalMobileReturned: any;
   mobileList: Array<any>;
   errorMsg: any;
   filterCond = {
@@ -58,7 +59,8 @@ export class MobileComponent implements OnInit {
   fetchMobile(queryString) {
     this.mobile.getAllMobile(queryString)
         .subscribe(result => {
-            this.mobileList = result;
+            this.mobileList = result.mobiles;
+            this.totalMobileReturned = result.totalCount;
         }),
         error =>  {
           this.errorMsg = error;
