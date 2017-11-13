@@ -23,7 +23,7 @@ app.set("port", port);
 
 // To Allow CORS calls
 app.use(function(req, res, next) {
-  var allowedOrigins = ['http://127.0.0.1:4200', 'http://localhost:4200'];
+  var allowedOrigins = ['http://127.0.0.1:4200', 'http://localhost:4200', 'http://192.168.0.10:4200', 'http://192.168.0.10:3000'];
   var origin = req.headers.origin;
   if(allowedOrigins.indexOf(origin) > -1){
     res.setHeader('Access-Control-Allow-Origin', origin);

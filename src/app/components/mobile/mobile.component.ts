@@ -8,6 +8,10 @@ import { MobileService } from '../../services/mobile.service';
 })
 export class MobileComponent implements OnInit {
 
+  page: number = 1; // the current pag
+  perPage: number = 9; // how many items we want to show per page
+  pagesToShow: number; // how many pages between next/prev
+  loading: boolean;
   totalMobileReturned: any;
   mobileList: Array<any>;
   errorMsg: any;
@@ -57,7 +61,7 @@ export class MobileComponent implements OnInit {
   }
 
   fetchMobile(queryString) {
-    this.mobile.getAllMobile(queryString)
+    this.mobile.getAllMobile(queryString, this.page-1)
         .subscribe(result => {
             this.mobileList = result.mobiles;
             this.totalMobileReturned = result.totalCount;
@@ -153,5 +157,70 @@ export class MobileComponent implements OnInit {
     }
 
     this.fetchMobile(queryString);
+  }
+
+  // Method for PaginationComponent
+  getMin(): number {
+    return ((this.perPage * this.page) - this.perPage) + 1;
+  }
+
+  getMax(): number {
+    let max = this.perPage * this.page;
+    if (max > this.totalMobileReturned) {
+      max = this.totalMobileReturned;
+    }
+    return max;
+  }
+
+  totalPages(): number {
+    return Math.ceil(this.totalMobileReturned / this.perPage) || 0;
+  }
+
+  lastPage(): boolean {
+    return this.perPage * this.page > this.totalMobileReturned;
+  }
+
+  getPages(): number[] {
+    const c = Math.ceil(this.totalMobileReturned / this.perPage);
+    const p = this.page || 1;
+    const pagesToShow = this.pagesToShow || 9;
+    const pages: number[] = [];
+    pages.push(p);
+    const times = pagesToShow - 1;
+    for (let i = 0; i < times; i++) {
+      if (pages.length < pagesToShow) {
+        if (Math.min.apply(null, pages) > 1) {
+          pages.push(Math.min.apply(null, pages) - 1);
+        }
+      }
+      if (pages.length < pagesToShow) {
+        if (Math.max.apply(null, pages) < c) {
+          pages.push(Math.max.apply(null, pages) + 1);
+        }
+      }
+    }
+    pages.sort((a, b) => a - b);
+    return pages;
+  }
+
+  onPrev()  {
+    if(this.page > 1)  {
+      this.page = this.page-1;
+      this.filterResult();
+    }
+  }
+
+  onPage(pageNumber)  {
+    this.page = pageNumber;
+    this.filterResult();
+  }
+
+  onNext()  {
+    if(this.page < Math.ceil(this.totalMobileReturned / this.perPage))  {
+      console.log("onNext");
+      this.page = this.page+1;
+      this.filterResult();
+    }
+
   }
 }

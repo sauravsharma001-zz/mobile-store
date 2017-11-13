@@ -1,6 +1,7 @@
 #mobileMainDiv{
   max-width: 90%;
   padding-left: 5%;
+  display: table-row;
 }
 #filter {
   float: left;
@@ -12,6 +13,7 @@
   padding: 6px 6px 20px 10px;
   margin-bottom: 20px;
   overflow: hidden;
+  display: table-cell;
 }
 #filter h3, #filter h4 {
   padding: 2%;
@@ -36,10 +38,17 @@
 .a-size-base  {
   font-size: 1.3em;
 }
+.active {
+  text-decoration: underline;
+}
 ul  {
   list-style-type: none
 }
 .mobilePic  {
   width: 200px;
   height: 200px;
+}
+.pagination {
+  padding-top: 2%;
+  padding-left: 50%;
 }

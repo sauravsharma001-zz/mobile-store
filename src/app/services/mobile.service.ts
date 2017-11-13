@@ -24,8 +24,8 @@ export class MobileService {
         .catch((error: any) => Observable.throw(error)); // ...errors if any
   }
 
-  getAllMobile(queryString: any)  {
-    return this._http.get(this.url + '/api/mobiles?' + queryString)
+  getAllMobile(queryString: any, page: any)  {
+    return this._http.get(this.url + '/api/mobiles?offset=' + page + "&" + queryString)
       .map((res: Response ) => {
           return res.json();
       })

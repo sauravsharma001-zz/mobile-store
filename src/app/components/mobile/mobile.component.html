@@ -121,17 +121,8 @@
     </div>
     <div id="mobileList" class="container">
       <div class="container">
-          <div class="row" style="padding-left: 15%;">
-            <!-- <strong>Mobile ({{totalMobileReturned}})</strong> -->
+          <div class="row" style="padding-left: 15%; padding-top: 2%;">
               <h3 class="a-size-medium a-spacing-base a-spacing-top-base a-color-tertiary a-text-normal">Mobile ({{totalMobileReturned}})</h3>
-            <!-- <div class="btn-group">
-                <a id="list" class="btn btn-default btn-sm">
-                  <span class="glyphicon glyphicon-th-list"></span>List
-                </a>
-                <a id="grid" class="btn btn-default btn-sm">
-                  <span class="glyphicon glyphicon-th"></span>Grid
-                </a>
-            </div> -->
           </div>
       </div>
       <div class="container">
@@ -161,6 +152,19 @@
             </div>
           </div>
       	</div>
+        <div class="pagination" *ngIf="totalMobileReturned > 0">
+        	<div class="numbers">
+        		<span class="link"
+                (click)="onPrev()"
+                [ngClass]="{ 'disabled': page === 1 || loading }">&lt; Previous</span>
+
+        		 <span *ngFor="let pageNum of getPages()"
+        			(click)="onPage(pageNum)"
+        			[ngClass]="{'active': pageNum === page, 'disabled': loading}">{{ pageNum }}</span>
+
+        		<span class="link" (click)="onNext()" [ngClass]="{ 'disabled': lastPage() || loading }">Next &gt;</span>
+        	</div>
+        </div>
       </div>
     </div>
 </div>

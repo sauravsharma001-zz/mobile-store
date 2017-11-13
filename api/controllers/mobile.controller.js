@@ -12,7 +12,7 @@ module.exports.mobileGetAll = function(req, res)  {
   var sortCond = "-price.value";
   var filterCond = {};
 
-  if(Object.keys(req.query).length > 0) {
+  if(Object.keys(req.query).length > 0 && !(Object.keys(req.query).length === 1 && req.query.offset)) {
     filterCond.$and = [];
   }
 
@@ -74,7 +74,7 @@ module.exports.mobileGetAll = function(req, res)  {
   }
 
   if(req.query && req.query.offset)   {
-    offset = parseInt(req.query.offset, 10);
+    offset = parseInt(req.query.offset*count, 10);
   }
 
   if(req.query && req.query.count)   {
