@@ -1,0 +1,103 @@
+<div class="container-fluid" id="mobileInstance">
+    <div class="row mobileImage">
+        <div class="col-lg-5" style="padding-top: 5%;">
+            <img *ngIf="mobileDetails && mobileDetails.image" class="mobilePic" src="assets/{{mobileDetails.image}}" alt="{{mobileDetails.name}}">
+        </div>
+        <div class="col-lg-6">
+          <h3 class="a-size-medium a-spacing-base a-spacing-top-base a-color-tertiary a-text-normal">{{mobileDetails.name}}</h3>
+          <span>by {{mobileDetails.brand}}</span>
+          <hr />
+
+          <div class="container">
+            <div class="row">
+              <div class="col-lg-6">
+                <span class="specName">Processor</span> <br />
+                <div class="col-lg-12">
+                  <span class="subspecName">Processor Type, Speed </span> <br/>
+                  <span class="a-size-small a-color-secondary">{{mobileDetails.cpu}}</span>
+                </div>
+              </div>
+            <div class="col-lg-6">
+              <span class="specName">Operating System</span> <br />
+              <div class="col-lg-12">
+                <span>{{mobileDetails.os}}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <span class="specName">Display</span> <br />
+              <div class="col-lg-12">
+                <span class="subspecName">Main Display Resolution</span>
+              </div>
+              <div class="col-lg-12" style="padding-bottom: 1%;">
+                <span class="a-size-small a-color-secondary">{{mobileDetails.display.resolution}}</span>
+              </div>
+              <div class="col-lg-12">
+                <span class="subspecName">Main Display Size</span><br />
+              </div>
+              <div class="col-lg-12">
+                <span class="a-size-small a-color-secondary">{{mobileDetails.display.size}}"</span>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <span class="specName">Camera</span> <br />
+              <div class="col-lg-12">
+                <span class="subspecName">Rear Camera</span>
+              </div>
+              <div class="col-lg-12" style="padding-bottom: 1%;">
+                <div *ngFor="let primaryCamera of mobileDetails.camera.primary">
+                  <span class="a-size-small a-color-secondary">
+                    {{primaryCamera.imagesensor}} {{primaryCamera.unit}}, {{primaryCamera.focallength}}
+                  </span>
+                </div>
+              </div>
+              <div class="col-lg-12">
+                <span class="subspecName">Front Camera</span> <br />
+              </div>
+              <div class="col-lg-12">
+                <span class="a-size-small a-color-secondary">
+                  {{mobileDetails.camera.secondary.imagesensor}} {{mobileDetails.camera.secondary.unit}}, {{mobileDetails.camera.secondary.focallength}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <span class="specName">Memory</span> <br />
+              <div class="col-lg-12">
+                <span class="subspecName">RAM</span><br />
+                <span class="a-size-small a-color-secondary">{{mobileDetails.memory.ram}} {{mobileDetails.memory.unit}}</span>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <span class="specName">Battery</span> <br />
+              <div class="col-lg-12">
+                <span class="a-size-small a-color-secondary">{{mobileDetails.battery.power}} {{mobileDetails.battery.unit}}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-lg-6">
+              <span class="specName">Graphics</span> <br />
+              <div class="col-lg-12">
+                <span>{{mobileDetails.gpu}}</span>
+              </div>
+            </div>
+          </div>
+
+        <div class="row" style="padding-top:2%;">
+          <div class="col-lg-6">
+            <a class="btn btn-success" (click)="addToCart()">Add to cart</a>
+          </div>
+        </div>
+      </div>
+
+      </div>
+    </div>
+</div>

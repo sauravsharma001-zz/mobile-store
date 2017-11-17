@@ -24,8 +24,16 @@ export class MobileService {
         .catch((error: any) => Observable.throw(error)); // ...errors if any
   }
 
-  getAllMobile(queryString: any, page: any)  {
+  getMobileAll(queryString: any, page: any)  {
     return this._http.get(this.url + '/api/mobiles?offset=' + page + "&" + queryString)
+      .map((res: Response ) => {
+          return res.json();
+      })
+      .catch((error: any) => Observable.throw(error)); // ...errors if any
+  }
+
+  getMobileOne(mobileId: any)  {
+    return this._http.get(this.url + '/api/mobiles/' + mobileId)
       .map((res: Response ) => {
           return res.json();
       })

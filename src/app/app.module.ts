@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -18,6 +19,7 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { MobileService } from './services/mobile.service';
 import { AddmobileComponent } from './components/addmobile/addmobile.component';
+import { MobileInstanceComponent } from './components/mobile-instance/mobile-instance.component';
 
 @NgModule({
   declarations: [
@@ -30,12 +32,14 @@ import { AddmobileComponent } from './components/addmobile/addmobile.component';
     ProfileComponent,
     AboutComponent,
     MobileComponent,
-    AddmobileComponent
+    AddmobileComponent,
+    MobileInstanceComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -64,7 +68,7 @@ import { AddmobileComponent } from './components/addmobile/addmobile.component';
       },
       {
         path: 'mobile/:mobileId',
-        component: MobileComponent
+        component: MobileInstanceComponent
       }
     ])
   ],

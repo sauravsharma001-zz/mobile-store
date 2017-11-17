@@ -1,0 +1,40 @@
+.mobileImage  {
+  padding-left: 10%;
+
+}
+.mobileSpecs  {
+}
+img {
+  width: 100%;
+}
+.a-text-bold {
+    font-weight: 700!important;
+}
+.a-size-small {
+    font-size: 13px!important;
+    line-height: 15px!important;
+}
+.a-spacing-mini, .a-ws .a-ws-spacing-mini {
+    margin-bottom: 5px!important;
+}
+.a-color-base {
+  color: #002F36!important;
+}
+.a-size-base  {
+  font-size: 1.3em;
+}
+.left {
+  float: left;
+}
+.right  {
+  float: right;
+}
+.col-lg-12  {
+  padding-bottom: 2%;
+}
+.subspecName  {
+  font-weight: 500;
+}
+.specName {
+  font-weight: bold;
+}

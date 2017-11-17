@@ -61,7 +61,7 @@ export class MobileComponent implements OnInit {
   }
 
   fetchMobile(queryString) {
-    this.mobile.getAllMobile(queryString, this.page-1)
+    this.mobile.getMobileAll(queryString, this.page-1)
         .subscribe(result => {
             this.mobileList = result.mobiles;
             this.totalMobileReturned = result.totalCount;
