@@ -1,4 +1,10 @@
 <div class="container-fluid" id="mobileInstance">
+    <div>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="mobile">Mobile</a></li>
+        <li class="breadcrumb-item active">{{ mobileDetails.name }}</li>
+      </ol>
+    </div>
     <div class="row mobileImage">
         <div class="col-lg-5" style="padding-top: 5%;">
             <img *ngIf="mobileDetails && mobileDetails.image" class="mobilePic" src="assets/{{mobileDetails.image}}" alt="{{mobileDetails.name}}">
@@ -50,7 +56,7 @@
               <div class="col-lg-12" style="padding-bottom: 1%;">
                 <div *ngFor="let primaryCamera of mobileDetails.camera.primary">
                   <span class="a-size-small a-color-secondary">
-                    {{primaryCamera.imagesensor}} {{primaryCamera.unit}}, {{primaryCamera.focallength}}
+                    {{primaryCamera.imagesensor}} {{primaryCamera.unit}} <span *ngIf="primaryCamera.focallength">, {{primaryCamera.focallength}}</span>
                   </span>
                 </div>
               </div>
@@ -59,7 +65,8 @@
               </div>
               <div class="col-lg-12">
                 <span class="a-size-small a-color-secondary">
-                  {{mobileDetails.camera.secondary.imagesensor}} {{mobileDetails.camera.secondary.unit}}, {{mobileDetails.camera.secondary.focallength}}
+                  {{mobileDetails.camera.secondary.imagesensor}} {{mobileDetails.camera.secondary.unit}}
+                  <span *ngIf="mobileDetails.camera.secondary.focallength">, {{mobileDetails.camera.secondary.focallength}}</span>
                 </span>
               </div>
             </div>
@@ -87,6 +94,13 @@
               <span class="specName">Graphics</span> <br />
               <div class="col-lg-12">
                 <span>{{mobileDetails.gpu}}</span>
+              </div>
+            </div>
+
+            <div class="col-lg-6">
+              <span class="specName">Price</span> <br />
+              <div class="col-lg-12">
+                <span class="a-size-small a-color-secondary">{{mobileDetails.price.value}} {{mobileDetails.price.unit}}</span>
               </div>
             </div>
           </div>

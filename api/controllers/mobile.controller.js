@@ -3,6 +3,46 @@ var Mobile = mongoose.model("Mobile");
 var Test = mongoose.model("Test");
 var fs = require('fs');
 
+// To Search mobile with keyword
+module.exports.mobileSearch = function(req, res)  {
+
+    var sortCond = "-price.value";
+    var count = 9;
+    if(!req.query.keyword)  {
+      res
+        .status(500)
+        .json({message: 'keyword not provided'});
+    }
+    else {
+      var filterCond = {};
+      filterCond.$text = {};
+      filterCond.$text.$search = req.query.keyword;
+      Mobile
+        .find(filterCond)
+        .select("-cpu -gpu  -memory -camera")
+        .sort(sortCond)
+        .limit(count)
+        .exec(function(err, mobileList) {
+          if(err) {
+            res
+              .status(500)
+              .json(err);
+          }
+          else {
+
+            Mobile.count(filterCond, function(err, c) {
+              var response = {};
+              response.mobiles = mobileList;
+              response.totalCount = c;
+              res
+                .status(200)
+                .json(response);
+            });
+          }
+        });
+    }
+}
+
 // To Get All To-do list
 module.exports.mobileGetAll = function(req, res)  {
 
@@ -127,62 +167,23 @@ module.exports.mobileGetAll = function(req, res)  {
 };
 
 module.exports.mobileAddOne = function(req, res)  {
-  console.log("Adding a mobile");
-  if(req.body && req.body.name && req.body.brand && req.body.os
-     && req.body.cpu && req.body.gpu && req.body.display && req.body.display.size
-     && req.body.display.resolution && req.body.memory && req.body.memory.ram
-     && req.body.battery && req.body.battery.power && req.body.price && req.body.camera
-     && req.body.price.value)  {
-    Mobile
-      .create({
-        name: req.body.name,
-        brand: req.body.brand,
-        os: req.body.os,
-        display:  {
-          size: req.body.display.size,
-          resolution:  req.body.display.resolution
-        },
-        cpu: req.body.cpu,
-        gpu: req.body.gpu,
-        memory:	{
-          ram: req.body.memory.ram,
-          unit: req.body.memory.unit
-        },
-        camera: {
-          primary: req.body.camera.primary,
-          secondary: {
-            imagesensor: req.body.camera.secondary.imagesensor,
-            focallength: req.body.camera.secondary.focallength,
-            unit: req.body.camera.secondary.unit
-          }
-        },
-        battery: {
-          power: req.body.battery.power,
-          unit:	req.body.battery.unit
-        },
-        price:  {
-          value: req.body.price.value,
-          unit: req.body.price.unit
-        },
-        isdeleted:  false
-      },  function(err, mobile) {
-        if(err) {
-          res
-            .status(400)
-            .json(err);
-        }
-        else {
-          res
-            .status(201)
-            .json(mobile);
-        }
-      });
-    }
-    else {
+
+  var mobile = JSON.parse(req.body.mobile);
+  if(req.file)
+    mobile.image = req.file.path.substring(req.file.path.lastIndexOf("\\")+1);
+  Mobile
+    .create(mobile,  function(err, newMobile) {
+      if(err) {
         res
           .status(400)
-          .json({'error': 'All required fields not provided'});
-    }
+          .json(err);
+      }
+      else {
+        res
+          .status(201)
+          .json(newMobile);
+      }
+    });
 };
 
 module.exports.mobileGetOne = function(req, res)  {
@@ -254,28 +255,3 @@ module.exports.mobileDeleteOne = function(req, res)  {
      });
 
 };
-
-module.exports.test = function(req, res)  {
-  console.log('image', req.file.path);
-  console.log('contentType', req.file.mimetype);
-  console.log('body', req.body);
-  res
-    .status(200)
-    .json({"success": true});
-  // Test
-  //   .create({
-  //      img.data = req.body.;
-  //      img.contentType = 'image/png';
-  //   },  function(err, mobile) {
-  //     if(err) {
-  //       res
-  //         .status(400)
-  //         .json(err);
-  //     }
-  //     else {
-  //       res
-  //         .status(201)
-  //         .json(mobile);
-  //     }
-  //   });
-}

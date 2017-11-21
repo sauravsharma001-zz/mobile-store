@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
+import { MobileService } from '../../services/mobile.service';
 
 @Component({
   selector: 'app-addmobile',
@@ -7,9 +10,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddmobileComponent implements OnInit {
 
-  constructor() { }
+  newMobile: any;
+
+  constructor(private mobile: MobileService,
+              private elem: ElementRef,
+              private router: Router,
+              private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.newMobile = {};
+    this.newMobile.camera = {};
+    this.newMobile.camera.secondary = {};
+    this.newMobile.camera.primary = {};
+    this.newMobile.display = {};
+    this.newMobile.memory = {};
+    this.newMobile.battery = {};
+    this.newMobile.price = {};
   }
+
+  addMobile(event)  {
+    event.preventDefault();
+    let files = this.elem.nativeElement.querySelector("#mobileImage").files;
+    let formData = new FormData();
+    let file = files[0];
+    let primaryCamera = {};
+    primaryCamera = this.newMobile.camera.primary;
+    this.newMobile.camera.primary = [];
+    this.newMobile.camera.primary.push(primaryCamera);
+    formData.append('mobileImage', file, this.newMobile.name + ".jpg");
+    formData.append("mobile", JSON.stringify(this.newMobile));
+    this.mobile.addMobile(formData)
+        .subscribe(result => {
+            console.log("result", result);
+          },
+          error => {
+            console.log("error", error);
+          });
+   }
 
 }

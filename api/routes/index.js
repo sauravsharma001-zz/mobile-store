@@ -3,19 +3,18 @@ const router = express.Router();
 
 var ctrlMobile = require("../controllers/mobile.controller.js");
 var ctrlUsers = require("../controllers/user.controller.js");
+var ctrlCart = require("../controllers/cart.controller.js");
 var ctrlUserOrderDetails = require("../controllers/userorderdetail.controller.js");
-
-
-// Testing
-router
-  .route("/test")
-  .post(ctrlMobile.test);
 
 // Routes related to Mobile
 router
   .route("/mobiles")
   .get(ctrlMobile.mobileGetAll)
   .post(ctrlMobile.mobileAddOne);
+
+router
+  .route("/mobiles/search")
+  .get(ctrlMobile.mobileSearch);
 
 router
   .route("/mobiles/:mobileId")
@@ -35,5 +34,16 @@ router
 router
   .route("/users/emailcheck")
   .post(ctrlUsers.emailcheck);
+
+router
+  .route("/cart")
+  .get(ctrlCart.cartGetAll)
+  .post(ctrlCart.cartAddOne);
+
+router
+  .route("/cart/:cartId")
+  .get(ctrlCart.cartGetOne)
+  .put(ctrlCart.cartUpdateOne)
+  .delete(ctrlCart.cartDeleteOne);
 
 module.exports = router;

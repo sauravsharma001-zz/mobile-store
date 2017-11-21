@@ -14,11 +14,10 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AboutComponent } from './components/about/about.component';
 import { MobileComponent } from './components/mobile/mobile.component';
-
+import { AddmobileComponent } from './components/addmobile/addmobile.component'
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { MobileService } from './services/mobile.service';
-import { AddmobileComponent } from './components/addmobile/addmobile.component';
 import { MobileInstanceComponent } from './components/mobile-instance/mobile-instance.component';
 
 @NgModule({
@@ -65,6 +64,10 @@ import { MobileInstanceComponent } from './components/mobile-instance/mobile-ins
       {
         path: 'mobile',
         component: MobileComponent
+      },
+      {
+        path: 'mobile/add',
+        component: AddmobileComponent
       },
       {
         path: 'mobile/:mobileId',

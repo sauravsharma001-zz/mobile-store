@@ -1,44 +1,92 @@
-<form>
-  <div class="form-group">
-    <div class="form-group">
-       <label for="exampleInputFile">File input</label>
-       <input type="file" class="form-control-file" id="mobileImage" name="mobileImage" aria-describedby="fileHelp">
-       <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
-    </div>
-  </div>
-  <button type="submit" class="btn btn-primary" (click)="upload($event)" >Submit</button>
-</form>
-<div id="mobileList" class="container">
-  <div class="well well-sm">
-      <strong>Mobile</strong>
-      <div class="btn-group">
-          <a id="list" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-th-list"></span>List
-          </a>
-          <a id="grid" class="btn btn-default btn-sm">
-            <span class="glyphicon glyphicon-th"></span>Grid
-          </a>
+<div class="container">
+  <div class="ro">
+    <form ngNativeValidate (submit)="addMobile($event)" >
+      <div class="form-group row">
+        <label for="name" class="col-1 col-form-label">Name</label>
+        <div class="col-4">
+          <input class="form-control" type="text" placeholder="Pixel 2XL" name="Pixel 2XL" id="name" [(ngModel)]="newMobile.name" required>
+        </div>
+        <div class="col-1"></div>
+        <label for="brand" class="col-1 col-form-label">Brand</label>
+        <div class="col-4">
+          <input class="form-control" type="search" placeholder="Google" name="Google" id="brand" [(ngModel)]="newMobile.brand" required>
+        </div>
       </div>
-  </div>
-  <div id="mobiles" class="row list-group">
-      <div *ngFor="let mobile of mobileList" class="item grid-group-item col-xs-4 col-lg-4">
-          <div class="thumbnail">
-              <img class="group list-group-image" src="http://placehold.it/400x250/000/fff" alt="{{mobile.name}}" />
-              <div class="caption">
-                      <a href="mobile/{{mobile._id}}" class="a-link-normal" title="{{mobile.name}}">
-                        <h2 class="a-size-base s-inline  s-access-title  a-text-normal">{{ mobile.name }}</h2>
-                      </a>
-                      <span class="a-size-small a-color-secondary">by {{mobile.brand}}</span>
-                  <div class="row">
-                      <div class="col-xs-12 col-md-6">
-                          <p class="lead">{{ mobile.price.unit }} {{ mobile.price.value }}</p>
-                      </div>
-                      <div class="col-xs-12 col-md-6">
-                          <a class="btn btn-success">Add to cart</a>
-                      </div>
-                  </div>
-              </div>
-          </div>
+      <div class="form-group row">
+        <label for="os" class="col-1 col-form-label">OS</label>
+        <div class="col-4">
+          <select class="form-control" id="os" value="Android 8.0" name="Android 8.0" [(ngModel)]="newMobile.os" required>
+            <option selected="selected">Android 8.0</option>
+            <option>Android 7.1</option>
+            <option>Android 7.0</option>
+            <option>Android 6.0</option>
+            <option>iOS 11.1</option>
+            <option>iOS 11.0</option>
+            <option>iOS 10.0</option>
+            <option>iOS 9.5</option>
+          </select>
+        </div>
+        <div class="col-1"></div>
       </div>
+      <div class="form-group row">
+        <label for="display" class="col-1 col-form-label">Display (in)</label>
+        <div class="col-4">
+          <input class="form-control" type="number" placeholder="5.5" name="5.5" id="display" step="0.1" min="4.0" max="7.0" [(ngModel)]="newMobile.display.size" required>
+        </div>
+        <div class="col-1"></div>
+        <label for="display" class="col-1 col-form-label">Resolution</label>
+        <div class="col-4">
+          <input class="form-control" type="text" title="1920X1024" placeholder="1920X1024" pattern="[0-9]{3,4}[X][0-9]{3,4}" name="1920X1024" id="display" [(ngModel)]="newMobile.display.resolution" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="primaryCamera" class="col-1 col-form-label">Primary Camera (MP)</label>
+        <div class="col-4">
+          <input class="form-control"type="number" placeholder="5" name="5" step="0.1" min="2" max="30" id="primaryCamera" [(ngModel)]="newMobile.camera.primary.imagesensor" required>
+        </div>
+        <div class="col-1"></div>
+        <label for="secondaryCamera" class="col-1 col-form-label">Secondary Camera (MP)</label>
+        <div class="col-4">
+          <input class="form-control" type="number" placeholder="5" name="5" step="0.1" min="2" max="30" id="secondaryCamera" [(ngModel)]="newMobile.camera.secondary.imagesensor" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="cpu" class="col-1 col-form-label">CPU</label>
+        <div class="col-4">
+          <input class="form-control" type="text" placeholder="Qualcomm MSM8998 Snapdragon 835" name="Qualcomm MSM8998 Snapdragon 835" id="cpu" [(ngModel)]="newMobile.cpu" required>
+        </div>
+        <div class="col-1"></div>
+        <label for="gpu" class="col-1 col-form-label">GPU</label>
+        <div class="col-4">
+          <input class="form-control" type="text" placeholder="Adreno 540" name="Adreno 540" id="gpu" [(ngModel)]="newMobile.gpu" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="ram" class="col-1 col-form-label">RAM (GB)</label>
+        <div class="col-4">
+          <input class="form-control" type="number" placeholder="3" name="3" id="ram" min="1" max="8" [(ngModel)]="newMobile.memory.ram" required>
+        </div>
+        <div class="col-1"></div>
+        <label for="battery" class="col-1 col-form-label">Battery (mAh)</label>
+        <div class="col-4">
+          <input class="form-control" type="number" placeholder="3500" name="3500" min="1000" max="4500" step="10" id="battery" [(ngModel)]="newMobile.battery.power" required>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label for="price" class="col-1 col-form-label">Price ($)</label>
+        <div class="col-4">
+          <input class="form-control" type="number" placeholder="900" name="900" min="100" max="9999" id="price" [(ngModel)]="newMobile.price.value" required>
+        </div>
+        <div class="col-1"></div>
+        <label for="image" class="col-1 col-form-label">Image</label>
+        <div class="col-4">
+          <input type="file" class="form-control-file" id="mobileImage" name="mobileImage" aria-describedby="fileHelp">
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-4"></div>
+        <button type="submit" class="btn btn-primary" >Add Mobile</button>
+      </div>
+    </form>
   </div>
 </div>

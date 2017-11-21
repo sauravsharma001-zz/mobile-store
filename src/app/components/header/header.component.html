@@ -11,10 +11,10 @@
       <!-- <li class="nav-item" *ngIf="!isLoggedIn"><a class="nav-link" href="/register">Register</a></li> -->
     </ul>
 
-    <form class="form-inline my-2 my-lg-0">
+    <form class="form-inline my-2 my-lg-0" >
       <div class="form-group">
-        <input class="form-control mr-sm-2" type="text" placeholder="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        <input class="form-control mr-sm-2" type="text" id="keyword" placeholder="Search" required>
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="redirectSearch($event)" type="button">Search</button>
       </div>
     </form>
     <form class="navbar-form" style="margin-left: 1%;" *ngIf="!isLoggedIn">

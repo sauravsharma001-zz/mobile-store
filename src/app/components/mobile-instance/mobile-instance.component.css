@@ -38,3 +38,7 @@ img {
 .specName {
   font-weight: bold;
 }
+.breadcrumb {
+  background-color: white;
+  padding-left: 10%;
+}

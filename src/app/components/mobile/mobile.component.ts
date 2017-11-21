@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { MobileService } from '../../services/mobile.service';
 
 @Component({
@@ -52,41 +53,44 @@ export class MobileComponent implements OnInit {
     }
   };
 
-  constructor(private mobile: MobileService, private elem: ElementRef ) {
+  constructor(private mobile: MobileService,
+              private elem: ElementRef,
+              private router: Router,
+              private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    this.fetchMobile('');
+
+    this.route.queryParams.subscribe((params: Params) => {
+        if(params.keyword)
+          this.searchMobile(params.keyword);
+        else
+          this.fetchMobile('');
+    });
+  }
+
+  searchMobile(keyword)  {
+      this.mobile.searchMobile(keyword)
+          .subscribe(result => {
+            this.mobileList = result.mobiles;
+            this.totalMobileReturned = result.totalCount;
+      });
   }
 
   fetchMobile(queryString) {
-    this.mobile.getMobileAll(queryString, this.page-1)
-        .subscribe(result => {
-            this.mobileList = result.mobiles;
-            this.totalMobileReturned = result.totalCount;
-        }),
-        error =>  {
-          this.errorMsg = error;
-        }
+      this.mobile.getMobileAll(queryString, this.page-1)
+          .subscribe(result => {
+              this.mobileList = result.mobiles;
+              this.totalMobileReturned = result.totalCount;
+          }),
+          error =>  {
+            this.errorMsg = error;
+
+      }
   }
 
-  upload(event)  {
-    event.preventDefault();
-    let files = this.elem.nativeElement.querySelector("#mobileImage").files;
-    let formData = new FormData();
-    let file = files[0];
-    formData.append('mobileImage', file, "Samsung.jpg");
-    formData.append("name", "Samsung");
-    this.mobile.upload(formData)
-        .subscribe(result => {
-            console.log("result", result);
-          },
-          error => {
-            console.log("error", error);
-          });
-  }
-
+  
   filterResult()  {
     console.log(this.filterCond);
     let queryString = "";

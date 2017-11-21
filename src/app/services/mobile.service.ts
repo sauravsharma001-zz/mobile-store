@@ -14,9 +14,9 @@ export class MobileService {
 
   constructor(private _http: Http) { }
 
-  upload(formData: any) {
+  addMobile(formData: any) {
     console.log("formData", formData);
-      return this._http.post(this.url + '/api/test', formData )
+      return this._http.post(this.url + '/api/mobiles', formData )
         .map((res: Response ) => {
             //console.log("response", res);
             return res;
@@ -34,6 +34,14 @@ export class MobileService {
 
   getMobileOne(mobileId: any)  {
     return this._http.get(this.url + '/api/mobiles/' + mobileId)
+      .map((res: Response ) => {
+          return res.json();
+      })
+      .catch((error: any) => Observable.throw(error)); // ...errors if any
+  }
+
+  searchMobile(keyword: any)  {
+    return this._http.get(this.url + '/api/mobiles/search?keyword=' + keyword)
       .map((res: Response ) => {
           return res.json();
       })
