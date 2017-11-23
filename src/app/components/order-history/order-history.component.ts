@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { OrderHistoryService } from '../../services/order.history.service';
+import { MobileService } from '../../services/mobile.service';
 
 @Component({
   selector: 'app-order-history',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderHistoryComponent implements OnInit {
 
-  constructor() { }
+  orderHistory: Array<any>;
+  errorMsg: any;
+
+  constructor(private order: OrderHistoryService,
+              private elem: ElementRef,
+              private router: Router,
+              private route: ActivatedRoute,
+              private mobile: MobileService) { }
 
   ngOnInit() {
+    this.order.getOrderAll()
+        .subscribe(result => {
+            this.orderHistory = result;
+        }),
+        error =>  {
+          this.errorMsg = error;
+    }
   }
 
 }

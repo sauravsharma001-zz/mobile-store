@@ -1,3 +1,46 @@
-<p>
-  order-history works!
-</p>
+<div id="orderHistoryPage">
+  <h1 *ngIf="orderHistory" class="display-4">Order History</h1>
+  <div *ngIf="orderHistory">
+    <div class="card" *ngFor="let order of orderHistory">
+      <div class="card-header">
+        <div class="row">
+        <div class="col-sm-4">Order Placed: {{ order.orderdate | date: 'MMM dd, yyyy'}}</div>
+        <div class="col-sm-4">Total: ${{ order.totalPrice }}</div>
+        <div class="col-sm-4">Order # {{ order._id }}</div>
+      </div>
+      </div>
+      <div class="card-body">
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let mobile of order.product">
+            <div class="row">
+              <div class="col-sm-2"><a href="/mobile/{{mobile.productId}}"><img class="mobileThumbnail" src="/assets/{{mobile.image}}"></a></div>
+              <div class="col-sm-2">
+                <a href="/mobile/{{mobile.productId}}" style="padding:1%;">{{ mobile.name }}</a><br />
+                <span>By {{ mobile.brand }}</span>
+              </div>
+              <div class="col-sm-2">
+                Price: ${{ mobile.price }}
+              </div>
+              <div class="col-sm-2">
+                Quantity: ${{ mobile.quantity }}
+              </div>
+              <div class="col-sm-2">
+                Total price: ${{ mobile.price * mobile.quantity }}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!orderHistory" class="container-fluid" class="orderNotFound">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+          <span class="display-4">
+            Haven't Order Yet. Try Ordering <a href="/mobile">Now</a>
+          </span>
+        </div>
+      </div>
+  </div>
+</div>

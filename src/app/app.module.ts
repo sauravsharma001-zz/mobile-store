@@ -51,9 +51,21 @@ import { OrderHistoryService } from './services/order.history.service';
         component: MainComponent
       },
       {
-        path: 'profile',
+        path: 'user/profile',
         component: ProfileComponent,
         canActivate: [AuthGuardService]
+      },
+      {
+        path: 'user/cart',
+        component: CartService
+      },
+      {
+        path: 'user/orders',
+        component: OrderHistoryComponent
+      },
+      {
+        path: 'user/orders/:orderId',
+        component: OrderHistoryComponent
       },
       {
         path: 'about',

@@ -152,18 +152,20 @@
             </div>
           </div>
       	</div>
-        <div class="pagination" *ngIf="totalMobileReturned > 0">
-        	<div class="numbers">
-        		<span class="link"
+        <div class="pagintion" *ngIf="totalMobileReturned > 0">
+        	<ul class="numbers pagination">
+        		<li class="link page-item"
                 (click)="onPrev()"
-                [ngClass]="{ 'disabled': page === 1 || loading }">&lt; Previous</span>
+                [ngClass]="{ 'disabled': page === 1 || loading }"><a class="page-link">Previous</a></li>
 
-        		 <span *ngFor="let pageNum of getPages()"
+        		 <li *ngFor="let pageNum of getPages()" class="page-item"
         			(click)="onPage(pageNum)"
-        			[ngClass]="{'active': pageNum === page, 'disabled': loading}">{{ pageNum }}</span>
+        			[ngClass]="{'active': pageNum === page, 'disabled': loading}"><a class="page-link">{{ pageNum }}</a></li>
 
-        		<span class="link" (click)="onNext()" [ngClass]="{ 'disabled': lastPage() || loading }">Next &gt;</span>
-        	</div>
+        		<li class="link page-item" (click)="onNext()" [ngClass]="{ 'disabled': lastPage() || loading }">
+              <a class="page-link">Next </a>
+            </li>
+        	</ul>
         </div>
       </div>
     </div>
