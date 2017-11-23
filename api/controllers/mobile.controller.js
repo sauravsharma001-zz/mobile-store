@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
 var Mobile = mongoose.model("Mobile");
-var Test = mongoose.model("Test");
 var fs = require('fs');
 
 // To Search mobile with keyword
@@ -8,15 +7,20 @@ module.exports.mobileSearch = function(req, res)  {
 
     var sortCond = "-price.value";
     var count = 9;
-    if(!req.query.keyword)  {
+    if(!req.query.keyword && !req.query.name)  {
       res
         .status(500)
         .json({message: 'keyword not provided'});
     }
     else {
       var filterCond = {};
-      filterCond.$text = {};
-      filterCond.$text.$search = req.query.keyword;
+      if(req.query.keyword) {
+        filterCond.$text = {};
+        filterCond.$text.$search = req.query.keyword;
+      }
+      else {
+          filterCond.name = req.query.name;
+      }
       Mobile
         .find(filterCond)
         .select("-cpu -gpu  -memory -camera")
@@ -62,6 +66,10 @@ module.exports.mobileGetAll = function(req, res)  {
     else  {
         filterCond.$and.push({'os': {$regex: '.*(' + req.query.os[0] + '|' + req.query.os[1] + ').*' }});
     }
+  }
+
+  if(req.query.name)  {
+    filterCond.$and.push({name: req.query.name});
   }
 
   if(req.query.brand)  {
@@ -210,7 +218,48 @@ module.exports.mobileGetOne = function(req, res)  {
 };
 
 module.exports.mobileUpdateOne = function(req, res)  {
+
     var mobileId = req.params.mobileId;
+    var updatedMobile = JSON.parse(req.body.mobile);
+    if(req.file)
+      mobile.image = req.file.path.substring(req.file.path.lastIndexOf("\\")+1);
+
+    Mobile
+        .findById(mobileId)
+        .exec(function(err, mobile) {
+            var response = {
+                status: 200,
+                message: mobile
+            }
+            if(err) {
+                response.status = 500;
+                response.message = err;
+            }
+            else if(!hotel)   {
+                response.status = 404;
+                response.message = {"message": "Mobile ID not found"};
+            }
+            if(response.status != 200)    {
+                res
+                    .status(response.status)
+                    .json(response.message);
+            }
+            else    {
+                mobile = updatedMobile;
+                mobile.save(function(err, mobileUpdated)  {
+                    if(err) {
+                        res
+                            .status(500)
+                            .json(err);
+                    }
+                    else    {
+                        res
+                            .status(204)
+                            .json(mobileUpdated);
+                    }
+                });
+            }
+        });
 
 };
 

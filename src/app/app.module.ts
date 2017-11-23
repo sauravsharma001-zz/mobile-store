@@ -14,11 +14,15 @@ import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AboutComponent } from './components/about/about.component';
 import { MobileComponent } from './components/mobile/mobile.component';
-import { AddmobileComponent } from './components/addmobile/addmobile.component'
+import { AddmobileComponent } from './components/addmobile/addmobile.component';
+import { MobileInstanceComponent } from './components/mobile-instance/mobile-instance.component';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
+import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { MobileService } from './services/mobile.service';
-import { MobileInstanceComponent } from './components/mobile-instance/mobile-instance.component';
+import { CartService } from './services/cart.service';
+import { OrderHistoryService } from './services/order.history.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +36,9 @@ import { MobileInstanceComponent } from './components/mobile-instance/mobile-ins
     AboutComponent,
     MobileComponent,
     AddmobileComponent,
-    MobileInstanceComponent
+    MobileInstanceComponent,
+    OrderHistoryComponent,
+    AddToCartComponent
   ],
   imports: [
     BrowserModule,
@@ -72,10 +78,14 @@ import { MobileInstanceComponent } from './components/mobile-instance/mobile-ins
       {
         path: 'mobile/:mobileId',
         component: MobileInstanceComponent
+      },
+      {
+        path: 'mobile/:mobileId/edit',
+        component: AddmobileComponent
       }
     ])
   ],
-  providers: [AuthenticationService, AuthGuardService, MobileService],
+  providers: [AuthenticationService, AuthGuardService, MobileService, CartService, OrderHistoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

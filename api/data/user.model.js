@@ -28,7 +28,7 @@ var addressSchema = new mongoose.Schema({
     type: Number,
     required: true
   }
-});
+}, { _id : false });
 
 var userSchema = new mongoose.Schema({
   firstname: {

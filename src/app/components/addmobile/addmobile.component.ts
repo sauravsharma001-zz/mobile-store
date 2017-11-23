@@ -11,6 +11,9 @@ import { MobileService } from '../../services/mobile.service';
 export class AddmobileComponent implements OnInit {
 
   newMobile: any;
+  errorMsg: any;
+  editPage: boolean = false;
+  osVersion: any;
 
   constructor(private mobile: MobileService,
               private elem: ElementRef,
@@ -18,14 +21,32 @@ export class AddmobileComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.newMobile = {};
-    this.newMobile.camera = {};
-    this.newMobile.camera.secondary = {};
-    this.newMobile.camera.primary = {};
-    this.newMobile.display = {};
-    this.newMobile.memory = {};
-    this.newMobile.battery = {};
-    this.newMobile.price = {};
+    if(!this.router.url.includes('edit')) {
+      this.newMobile = {};
+      this.newMobile.camera = {};
+      this.newMobile.camera.secondary = {};
+      this.newMobile.camera.primary = {};
+      this.newMobile.display = {};
+      this.newMobile.memory = {};
+      this.newMobile.battery = {};
+      this.newMobile.price = {};
+    }
+    else  {
+      let mobileId =  this.router.url.substring( this.router.url.indexOf('mobile')+7,  this.router.url.length-5);
+      this.editPage = true;
+      this.mobile.getMobileOne(mobileId)
+          .subscribe(result => {
+          console.log(mobileId, result);
+            this.newMobile = result;
+            this.osVersion = this.newMobile.os.split(' ')[1];
+            this.newMobile.os = this.newMobile.os.split(' ')[0];
+            this.newMobile.camera.primary = result.camera.primary[0];
+          }),
+          error =>  {
+            console.log('Error', error);
+            this.errorMsg = error;
+          };
+    }
   }
 
   addMobile(event)  {
@@ -35,17 +56,30 @@ export class AddmobileComponent implements OnInit {
     let file = files[0];
     let primaryCamera = {};
     primaryCamera = this.newMobile.camera.primary;
+    this.newMobile.os = this.newMobile.os + " " + this.osVersion;
     this.newMobile.camera.primary = [];
     this.newMobile.camera.primary.push(primaryCamera);
     formData.append('mobileImage', file, this.newMobile.name + ".jpg");
     formData.append("mobile", JSON.stringify(this.newMobile));
-    this.mobile.addMobile(formData)
+    if(!this.editPage)  {
+      this.mobile.addMobile(formData)
         .subscribe(result => {
             console.log("result", result);
           },
           error => {
             console.log("error", error);
           });
+    }
+    else  {
+      console.log('Update Mobile', this.newMobile);
+      this.mobile.updateMobile(this.newMobile._id, formData)
+        .subscribe(result => {
+            console.log("Mobile Updated");
+          },
+          error => {
+            console.log("error", error);
+          });
+    }
    }
 
 }

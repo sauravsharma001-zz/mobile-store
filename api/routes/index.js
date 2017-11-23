@@ -46,4 +46,13 @@ router
   .put(ctrlCart.cartUpdateOne)
   .delete(ctrlCart.cartDeleteOne);
 
+router
+  .route("/orders")
+  .get(ctrlUserOrderDetails.orderGetOneByUserId)
+  .post(ctrlUserOrderDetails.orderAddOneByUserId);
+
+router
+  .route("/orders/:orderId")
+  .get(ctrlUserOrderDetails.orderGetOne);
+
 module.exports = router;

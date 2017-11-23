@@ -5,26 +5,38 @@ var User = mongoose.model("User");
 var fs = require('fs');
 
 module.exports.cartGetAll = function(req, res) {
-  var userId = mongoose.Types.ObjectId(req.user.id);
-  Cart
-    .find({userId: userId})
-    .exec(function(err, cart) {
-      var response = {
-        status: 200,
-        message: cart
-      };
-      if(err)  {
-        response.status = 500;
-        response.message = err;
+
+  //var userId = req.user;
+  User
+    .find({email: 'sauravsharma001@gmail.com'})
+    .exec(function(err, user) {
+      if(err) {
+          res
+            .status(400)
+            .json('Invalid User used for uploading data');
       }
-      else if(!cart)  {
-        response.status = 404;
-        response.message = {"message": "Cart ID not found"};
+      else{
+        Cart
+          .find({userId: user[0]._id})
+          .exec(function(err, cart) {
+            var response = {
+              status: 200,
+              message: cart
+            };
+            if(err)  {
+              response.status = 500;
+              response.message = err;
+            }
+            else if(!cart)  {
+              response.status = 404;
+              response.message = {"message": "Cart ID not found"};
+            }
+            res
+              .status(response.status)
+              .json(response.message);
+        });
       }
-      res
-        .status(response.status)
-        .json(response.message);
-  });
+    });
 };
 
 module.exports.cartGetOne = function(req, res) {
@@ -51,43 +63,20 @@ module.exports.cartGetOne = function(req, res) {
 };
 
 module.exports.cartAddOne = function(req, res) {
-  var userId = mongoose.Types.ObjectId(req.user.id);
-  var productId = mongoose.Types.ObjectId(req.body.productId);
-  if(typeof req.body.productId == "undefined") {
-    var response = {
-      status: 400,
-      message: "Product-id not provided."
-    };
-    return res
-      .status(status)
-      .json(message);
-  }
-  else {
-    Mobile
-      .findById(productId)
-      .exec(function(err, mobile) {
-        if(mobile == null) {
-          response.status = 400;
-          response.message = "Mobile not found."
-          return res
-            .status(response.status)
-            .json(response.message)
-        }
-        else {
-          Cart
-          .create({
-            product: {
-              productId: productId,
-              price: {
-                value: mobile.price.value,
-                unit: mobile.price.unit
-              },
-              quantity: 1
-            },
-            totalPrice: mobile.price.value,
-            userId: userId,
-            isdeleted: false
-          }, function(err, cart) {
+
+  var newCartDetail = req.body;
+  User
+    .find({email: 'sauravsharma001@gmail.com'})
+    .exec(function(err, user) {
+      if(err) {
+          res
+            .status(400)
+            .json('Invalid User used for uploading data');
+      }
+      else{
+        newCartDetail.userId = user[0]._id;
+        Cart
+          .create(newCartDetail, function(err, cart) {
               if(err) {
                 res
                   .status(400)
@@ -98,20 +87,20 @@ module.exports.cartAddOne = function(req, res) {
                   .status(201)
                   .json(cart);
               }
-          });
-        }
-    });
-  }
-};
+        });
+      }
+  });
+}
 
 module.exports.cartUpdateOne = function(req, res) {
-  var count = req.query.count;
+
+  var cartId = req.params.cartId;
   Cart
     .findById(cartId)
     .exec(function(err, cart) {
       var response = {
         status: 200,
-        message: "Cart updated."
+        message: {"message": "Cart updated"}
       };
       if (err) {
         response.status = 500;
@@ -127,13 +116,13 @@ module.exports.cartUpdateOne = function(req, res) {
           .json(response.message);
       }
       else {
-        cart.product.quantity = count;
-        cart.totalPrice = count * cart.product.price.value;
-        cart.save(function (err) {
+        cart.product = req.body.product;
+        cart.totalPrice = req.body.totalPrice;
+        cart.save(function (err, updatedCart) {
           if(err) throw err;
           res
             .status(response.status)
-            .json(response.message);
+            .json(updatedCart);
         });
       }
   });

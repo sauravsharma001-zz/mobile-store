@@ -9,7 +9,7 @@ var displaySchema = new mongoose.Schema({
       type: String,
       required: true
     }
-});
+}, { _id : false });
 
 var ramSchema = new mongoose.Schema({
   ram:  {
@@ -21,7 +21,7 @@ var ramSchema = new mongoose.Schema({
     required: true,
     default: 'GB'
   }
-});
+}, { _id : false });
 
 var cameraConfigSchema = new mongoose.Schema({
     imagesensor:  {
@@ -36,12 +36,12 @@ var cameraConfigSchema = new mongoose.Schema({
       required: true,
       default: 'MP'
     }
-});
+}, { _id : false });
 
 var cameraSchema = new mongoose.Schema({
     primary: [cameraConfigSchema],
     secondary: cameraConfigSchema
-});
+}, { _id : false });
 
 var priceSchema = new mongoose.Schema({
     value:  {
@@ -53,7 +53,7 @@ var priceSchema = new mongoose.Schema({
       required: true,
       default: 'USD'
     }
-});
+}, { _id : false });
 
 var batterySchema = new mongoose.Schema({
     power:  {
@@ -66,7 +66,7 @@ var batterySchema = new mongoose.Schema({
       default: 'mAh'
     }
 
-});
+}, { _id : false });
 
 var mobileSchema = new mongoose.Schema({
   name: {

@@ -1,4 +1,4 @@
-<div class="container-fluid" id="mobileInstance">
+<div class="container-fluid" id="mobileInstance" *ngIf="mobileDetails">
     <div>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="mobile">Mobile</a></li>
@@ -112,6 +112,14 @@
         </div>
       </div>
 
+      </div>
+    </div>
+</div>
+<div *ngIf="!mobileDetails" class="container-fluid" class="mobileNotFound">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <span class="display-4">Invalid Mobile Id.</span>
       </div>
     </div>
 </div>

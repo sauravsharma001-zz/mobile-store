@@ -1,7 +1,7 @@
 var mongoose = require("mongoose");
 
 var productSchema = new mongoose.Schema({
-    productid:  {
+    productId:  {
       type: String,
       required: true
     },
@@ -14,7 +14,7 @@ var productSchema = new mongoose.Schema({
       type: Number,
       required: true
     }
-});
+}, { _id : false });
 
 var userOrderDetailSchema = new mongoose.Schema({
     userId: {
@@ -26,7 +26,7 @@ var userOrderDetailSchema = new mongoose.Schema({
         default: Date.now
     },
     product:  [productSchema],
-    orderbillamount:  {
+    totalPrice:  {
       type: Number,
       required: true
     }

@@ -64,17 +64,24 @@ export class MobileComponent implements OnInit {
 
     this.route.queryParams.subscribe((params: Params) => {
         if(params.keyword)
-          this.searchMobile(params.keyword);
+          this.searchMobile('keyword', params.keyword);
+        else if(params.name)
+          this.searchMobile('name', params.name);
         else
           this.fetchMobile('');
     });
   }
 
-  searchMobile(keyword)  {
-      this.mobile.searchMobile(keyword)
+  searchMobile(identifier, keyword)  {
+      this.mobile.searchMobile(identifier, keyword)
           .subscribe(result => {
-            this.mobileList = result.mobiles;
-            this.totalMobileReturned = result.totalCount;
+            if(result.totalCount == 1)  {
+              this.router.navigate(['/mobile/' + result.mobiles[0]._id]);
+            }
+            else  {
+              this.mobileList = result.mobiles;
+              this.totalMobileReturned = result.totalCount;
+            }
       });
   }
 
@@ -90,7 +97,7 @@ export class MobileComponent implements OnInit {
       }
   }
 
-  
+
   filterResult()  {
     console.log(this.filterCond);
     let queryString = "";

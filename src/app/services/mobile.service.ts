@@ -18,7 +18,15 @@ export class MobileService {
     console.log("formData", formData);
       return this._http.post(this.url + '/api/mobiles', formData )
         .map((res: Response ) => {
-            //console.log("response", res);
+            return res;
+        })
+        .catch((error: any) => Observable.throw(error)); // ...errors if any
+  }
+
+  updateMobile(mobileId, formData: any) {
+    console.log("formData", formData);
+      return this._http.post(this.url + '/api/mobiles/' + mobileId, formData )
+        .map((res: Response ) => {
             return res;
         })
         .catch((error: any) => Observable.throw(error)); // ...errors if any
@@ -40,8 +48,13 @@ export class MobileService {
       .catch((error: any) => Observable.throw(error)); // ...errors if any
   }
 
-  searchMobile(keyword: any)  {
-    return this._http.get(this.url + '/api/mobiles/search?keyword=' + keyword)
+  searchMobile(identifier: any, keyword: any)  {
+    var queryParams = '';
+    if(identifier === 'name')
+      queryParams = 'name='+keyword;
+    else
+      queryParams = 'keyword='+keyword;
+    return this._http.get(this.url + '/api/mobiles/search?' + queryParams)
       .map((res: Response ) => {
           return res.json();
       })

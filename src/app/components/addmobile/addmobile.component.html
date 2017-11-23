@@ -1,5 +1,13 @@
 <div class="container">
-  <div class="ro">
+  <div class="ro" *ngIf="newMobile">
+    <div>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="mobile">Mobile</a></li>
+        <li class="breadcrumb-item active" *ngIf="!editPage">add</li>
+        <li class="breadcrumb-item" *ngIf="editPage"><a href="mobile/{{newMobile._id}}">{{ newMobile.name }}</a></li>
+        <li class="breadcrumb-item active" *ngIf="editPage">edit</li>
+      </ol>
+    </div>
     <form ngNativeValidate (submit)="addMobile($event)" >
       <div class="form-group row">
         <label for="name" class="col-1 col-form-label">Name</label>
@@ -15,18 +23,26 @@
       <div class="form-group row">
         <label for="os" class="col-1 col-form-label">OS</label>
         <div class="col-4">
-          <select class="form-control" id="os" value="Android 8.0" name="Android 8.0" [(ngModel)]="newMobile.os" required>
-            <option selected="selected">Android 8.0</option>
-            <option>Android 7.1</option>
-            <option>Android 7.0</option>
-            <option>Android 6.0</option>
-            <option>iOS 11.1</option>
-            <option>iOS 11.0</option>
-            <option>iOS 10.0</option>
-            <option>iOS 9.5</option>
+          <select class="form-control" id="os" value="Android" name="Android" [(ngModel)]="newMobile.os" required>
+            <option selected="selected">Android</option>
+            <option>iOS</option>
           </select>
         </div>
         <div class="col-1"></div>
+        <label for="osVersion" class="col-1 col-form-label">OS Version</label>
+        <div class="col-4">
+          <select class="form-control" id="osVersion" value="8" name="8" [(ngModel)]="osVersion" required>
+            <option *ngIf="newMobile.os=='Android'" selected="selected">8</option>
+            <option *ngIf="newMobile.os=='Android'">7.1.1</option>
+            <option *ngIf="newMobile.os=='Android'">7.1</option>
+            <option *ngIf="newMobile.os=='Android'">7</option>
+            <option *ngIf="newMobile.os=='Android'">6</option>
+            <option *ngIf="newMobile.os=='iOS'">11.1</option>
+            <option *ngIf="newMobile.os=='iOS'">11.0</option>
+            <option *ngIf="newMobile.os=='iOS'">10.0</option>
+            <option *ngIf="newMobile.os=='iOS'">9.5</option>
+          </select>
+        </div>
       </div>
       <div class="form-group row">
         <label for="display" class="col-1 col-form-label">Display (in)</label>
@@ -36,13 +52,13 @@
         <div class="col-1"></div>
         <label for="display" class="col-1 col-form-label">Resolution</label>
         <div class="col-4">
-          <input class="form-control" type="text" title="1920X1024" placeholder="1920X1024" pattern="[0-9]{3,4}[X][0-9]{3,4}" name="1920X1024" id="display" [(ngModel)]="newMobile.display.resolution" required>
+          <input class="form-control" type="text" title="1920 X 1024" placeholder="1920 X 1024" pattern="[0-9]{3,4}( X )[0-9]{3,4}" name="1920 X 1024" id="display" [(ngModel)]="newMobile.display.resolution" required>
         </div>
       </div>
       <div class="form-group row">
         <label for="primaryCamera" class="col-1 col-form-label">Primary Camera (MP)</label>
         <div class="col-4">
-          <input class="form-control"type="number" placeholder="5" name="5" step="0.1" min="2" max="30" id="primaryCamera" [(ngModel)]="newMobile.camera.primary.imagesensor" required>
+          <input class="form-control"type="number" placeholder="8" name="5" step="0.1" min="2" max="30" id="primaryCamera" [(ngModel)]="newMobile.camera.primary.imagesensor" required>
         </div>
         <div class="col-1"></div>
         <label for="secondaryCamera" class="col-1 col-form-label">Secondary Camera (MP)</label>
@@ -83,9 +99,13 @@
           <input type="file" class="form-control-file" id="mobileImage" name="mobileImage" aria-describedby="fileHelp">
         </div>
       </div>
-      <div class="form-group row">
+      <div *ngIf="!editPage" class="form-group row">
         <div class="col-4"></div>
-        <button type="submit" class="btn btn-primary" >Add Mobile</button>
+        <button type="submit" class="btn btn-primary">Add Mobile</button>
+      </div>
+      <div *ngIf="editPage" class="form-group row">
+        <div class="col-4"></div>
+        <button type="submit" class="btn btn-primary">Update Mobile</button>
       </div>
     </form>
   </div>

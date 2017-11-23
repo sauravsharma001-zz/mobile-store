@@ -70,3 +70,6 @@ a, a:active, a:link, a:visited  {
   line-height: 15px!important;
   color: #6C7778!important;
 }
+.breadcrumb {
+  background: white;
+}
