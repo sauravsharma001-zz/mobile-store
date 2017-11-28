@@ -1,6 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { MobileService } from '../../services/mobile.service';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'app-mobile',
@@ -9,6 +12,7 @@ import { MobileService } from '../../services/mobile.service';
 })
 export class MobileComponent implements OnInit {
 
+  state: string = 'small';
   page: number = 1; // the current pag
   perPage: number = 9; // how many items we want to show per page
   pagesToShow: number; // how many pages between next/prev
@@ -54,6 +58,7 @@ export class MobileComponent implements OnInit {
   };
 
   constructor(private mobile: MobileService,
+              private cart: CartService,
               private elem: ElementRef,
               private router: Router,
               private route: ActivatedRoute) {
@@ -168,6 +173,29 @@ export class MobileComponent implements OnInit {
     }
 
     this.fetchMobile(queryString);
+  }
+
+  addToCart(index) {
+    let cartDetails = { "product": []};
+    var mobile = {
+      productId: this.mobileList[index]._id,
+      name: this.mobileList[index].name,
+      brand: this.mobileList[index].brand,
+      image: this.mobileList[index].image,
+      quantity: 1,
+      price: this.mobileList[index].price.value
+    };
+    cartDetails.product.push(mobile);
+    console.log('cart', cartDetails);
+    this.cart.addCart(cartDetails)
+        .subscribe(result => {
+          console.log(result);
+          this.router.navigate(['/cart']);
+        }),
+        error =>  {
+          console.log('Error', error);
+          this.errorMsg = 'Unable to add mobile into cart. Please try again';
+        };
   }
 
   // Method for PaginationComponent

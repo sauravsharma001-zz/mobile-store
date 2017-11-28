@@ -15,6 +15,7 @@ module.exports.orderGetOneByUserId = function(req, res)  {
       else{
         UserOrderDetail
            .find({userId: user[0]._id})
+           .sort('-orderdate')
            .exec(function(err, order){
              var response = {
                    status: 200,

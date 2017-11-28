@@ -17,7 +17,7 @@ module.exports.cartGetAll = function(req, res) {
       }
       else{
         Cart
-          .find({userId: user[0]._id})
+          .findOne({userId: user[0]._id})
           .exec(function(err, cart) {
             var response = {
               status: 200,
@@ -66,7 +66,7 @@ module.exports.cartAddOne = function(req, res) {
 
   var newCartDetail = req.body;
   User
-    .find({email: 'sauravsharma001@gmail.com'})
+    .findOne({email: 'sauravsharma001@gmail.com'})
     .exec(function(err, user) {
       if(err) {
           res
@@ -74,20 +74,73 @@ module.exports.cartAddOne = function(req, res) {
             .json('Invalid User used for uploading data');
       }
       else{
-        newCartDetail.userId = user[0]._id;
+        newCartDetail.userId = user._id;
         Cart
-          .create(newCartDetail, function(err, cart) {
-              if(err) {
-                res
-                  .status(400)
-                  .json(err);
+          .findOne({userId: user._id})
+          .exec(function(err, cart) {
+            var response = {
+              status: 200,
+              message: cart
+            };
+            if(err)  {
+              response.status = 500;
+              response.message = err;
+            }
+            else if(!cart)  {
+              newCartDetail.totalPrice = newCartDetail.product[0].quantity * newCartDetail.product[0].price;
+              Cart
+                .create(newCartDetail, function(err, cart) {
+                    if(err) {
+                      res
+                        .status(400)
+                        .json(err);
+                    }
+                    else {
+                      res
+                        .status(201)
+                        .json(cart);
+                    }
+              });
+            }
+            else{
+              var found = false;
+              for(var i = 0; i < cart.product.length; i++)  {
+                if(cart.product[i].productId === newCartDetail.product[0].productId) {
+                  cart.product[i].quantity += 1;
+                  found = true;
+                }
               }
-              else {
-                res
-                  .status(201)
-                  .json(cart);
+              if(!found)  {
+                cart.product.push(newCartDetail.product[0]);
               }
+              cart.totalPrice += newCartDetail.product[0].price;
+              cart.save(function (err, updatedCart) {
+                if(err) {
+                  res
+                    .status(500)
+                    .json(err);
+                }
+                else {
+                  res
+                    .status(response.status)
+                    .json(updatedCart);
+                }
+              });
+            }
         });
+        // Cart
+        //   .create(newCartDetail, function(err, cart) {
+        //       if(err) {
+        //         res
+        //           .status(400)
+        //           .json(err);
+        //       }
+        //       else {
+        //         res
+        //           .status(201)
+        //           .json(cart);
+        //       }
+        // });
       }
   });
 }
@@ -129,42 +182,20 @@ module.exports.cartUpdateOne = function(req, res) {
 };
 
 module.exports.cartDeleteOne = function(req, res) {
-  var cartId = mongoose.Types.ObjectId(req.params.cartId);
+
+  var cartId = req.params.cartId;
   Cart
-    .findById(cartId)
-    .select("isdeleted")
+    .findByIdAndRemove(cartId)
     .exec(function(err, cart){
-      var response = {
-        status: 200,
-        message: cartId
-      };
       if(err)  {
-        response.status = 500;
-        response.message = err;
-      }
-      else if(!cartId)  {
-        response.status = 404;
-        response.message = {"message": "Cart ID not found"};
-      }
-      if(response.status != 200)    {
         res
-          .status(response.status)
-          .json(response.message);
+          .status(500)
+          .json(err);
       }
       else {
-        cart.isdeleted = true;
-        cart.save(function(err, cartUpdated) {
-          if(err) {
-            res
-              .status(500)
-              .json(err);
-          }
-          else {
-            res
-              .status(204)
-              .json({"message": "cart deleted"});
-            }
-        });
+        res
+          .status(204)
+          .json();
       }
   });
 };

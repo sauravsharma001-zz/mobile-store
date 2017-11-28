@@ -127,12 +127,14 @@
       </div>
       <div class="container">
       	 <div class="row ">
-      		<div class="col-md-4 mobile" *ngFor="let mobile of mobileList">
+      		<div class="col-md-4 mobile" *ngFor="let mobile of mobileList; let i = index">
             <div class="thumbnail">
               <div class="row">
                 <div  class="col-md-4">
-                  <img *ngIf="mobile.image" class="mobilePic" src="assets/{{mobile.image}}" alt="{{mobile.name}}">
-                  <img *ngIf="!mobile.image" src="http://placehold.it/200x200" alt="{{mobile.name}}">
+                  <a href="mobile/{{mobile._id}}" class="a-link-normal" title="{{mobile.name}}">
+                    <img *ngIf="mobile.image" class="mobilePic" src="assets/{{mobile.image}}" alt="{{mobile.name}}">
+                    <img *ngIf="!mobile.image" src="http://placehold.it/200x200" alt="{{mobile.name}}">
+                  </a>
                 </div>
               </div>
               <div class="caption">
@@ -146,7 +148,7 @@
                     <p class="lead">$ {{ mobile.price.value }}</p>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                    <a class="btn btn-success">Add to cart</a>
+                    <a class="btn btn-success" (click)="addToCart(i)">Add to cart</a>
                 </div>
               </div>
             </div>

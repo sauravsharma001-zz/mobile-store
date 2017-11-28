@@ -1,3 +1,52 @@
-<p>
-  add-to-cart works!
-</p>
+<div id="cartMainDiv">
+  <div *ngIf="cartDetails">
+    <div id="cart">
+      <h1 class="display-4">Order History</h1>
+      <div class="row">
+          <div class="col-lg-6" style="text-align: center;">Mobile</div>
+          <div class="col-lg-2">Unit Price</div>
+          <div class="col-lg-2">Quantity</div>
+          <div class="col-lg-2">Total Price</div>
+      </div>
+      <hr />
+      <div class="row cartItem" *ngFor="let product of cartDetails.product; let i = index">
+          <div class="col-lg-3"><a href="/mobile/{{product.productId}}"><img class="mobileThumbnail" src="/assets/{{product.image}}"></a></div>
+          <div class="col-lg-3">
+            <a href="/mobile/{{product.productId}}" style="padding:1%;">{{ product.name }}</a> <br />
+            <span>By {{ product.brand }}</span>
+          </div>
+          <div class="col-lg-2">${{ product.price }}</div>
+          <div class="col-lg-2">
+            <select class="form-control" id="osVersion" value="8" name="8" (change)="updateCart()" [(ngModel)]="product.quantity" required>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </div>
+          <div class="col-lg-2">
+            ${{ product.quantity * product.price }}
+            <img style="padding-left:2%;" (click)="removeProduct(i)" width="40px" src="assets/icons/delete.png"/>
+          </div>
+      </div>
+      <hr />
+      <div class="cartPrice">
+        Grand Total: ${{cartDetails.totalPrice}}
+      </div>
+      <div class="cartButton">
+        <a class="btn btn-info" href="/mobile" style="margin-bottom:2%;">Continue Shopping</a>
+        <a class="btn btn-danger" (click)="clearCart()">Clear Cart</a>
+        <a class="btn btn-success" (click)="checkout()">Checkout</a>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!cartDetails" class="container-fluid" class="orderNotFound">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+          <span class="display-4">
+            Cart Empty. Start <a href="/mobile">Shopping</a>
+          </span>
+        </div>
+      </div>
+  </div>
+</div>

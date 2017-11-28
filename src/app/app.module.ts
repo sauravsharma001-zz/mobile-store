@@ -18,6 +18,8 @@ import { AddmobileComponent } from './components/addmobile/addmobile.component';
 import { MobileInstanceComponent } from './components/mobile-instance/mobile-instance.component';
 import { OrderHistoryComponent } from './components/order-history/order-history.component';
 import { AddToCartComponent } from './components/add-to-cart/add-to-cart.component';
+import { CheckoutComponent } from './components/checkout/checkout.component';
+
 import { AuthGuardService } from './services/auth-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { MobileService } from './services/mobile.service';
@@ -38,7 +40,8 @@ import { OrderHistoryService } from './services/order.history.service';
     AddmobileComponent,
     MobileInstanceComponent,
     OrderHistoryComponent,
-    AddToCartComponent
+    AddToCartComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,
@@ -56,16 +59,20 @@ import { OrderHistoryService } from './services/order.history.service';
         canActivate: [AuthGuardService]
       },
       {
-        path: 'user/cart',
-        component: CartService
-      },
-      {
         path: 'user/orders',
         component: OrderHistoryComponent
       },
       {
         path: 'user/orders/:orderId',
         component: OrderHistoryComponent
+      },
+      {
+        path: 'cart',
+        component: AddToCartComponent
+      },
+      {
+        path: 'cart/checkout',
+        component: CheckoutComponent
       },
       {
         path: 'about',
