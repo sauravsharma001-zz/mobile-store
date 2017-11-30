@@ -12,6 +12,12 @@ export class AuthenticationService {
   result: any;
   public token: string;
 
+  public getToken(): string {
+    const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
+    console.log('token', currentUser.token);
+    return currentUser.token;
+  }
+
   constructor(private _http: Http) {
     this.isUserLoggedIn = false;
     const currentUser = JSON.parse(sessionStorage.getItem('currentUser'));
@@ -23,11 +29,13 @@ export class AuthenticationService {
         .map((res: Response ) => {
             const token = res.json() && res.json().token;
             const name = res.json() && res.json().name;
+            const profile = res.json() && res.json().userrole;
             console.log("token", token);
             if (token) {
               this.token = token;
               this.name = name;
               sessionStorage.setItem('currentUser', JSON.stringify({ name: name, token: token }));
+              sessionStorage.setItem('userProfile', JSON.stringify({name: name, profile: profile}));
               return true;
             } else {
               return false;
@@ -37,17 +45,19 @@ export class AuthenticationService {
 
     }
 
-    register(firstname, lastname, email, password)  {
-      return this._http.post(this.url + '/api/users/register', {
-            firstname: firstname,
-            lastname: lastname,
-            email: email,
-            password: password
-            } )
-        .map(result => this.result = result.json());
-    }
+  register(user_json)  {
+    return this._http.post(this.url + '/api/users/register', user_json)
+      .map(result => this.result = result.json())
+      .catch((error: any) => Observable.throw(error)); // ...errors if any
+  }
 
-    setUserLoggedIn(flag, name) {
+  emailcheck(email)  {
+    return this._http.post(this.url + '/api/users/emailcheck', email)
+      .map(result => this.result = result.json())
+      .catch((error: any) => Observable.throw(error)); // ...errors if any
+  }
+
+  setUserLoggedIn(flag, name) {
     this.isUserLoggedIn = flag;
     this.name = name;
   }
@@ -60,5 +70,6 @@ export class AuthenticationService {
     // clear token remove user from local storage to log user out
     this.token = null;
     sessionStorage.removeItem('currentUser');
+    sessionStorage.removeItem('userProfile');
   }
 }

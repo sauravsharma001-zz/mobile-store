@@ -1,3 +1,33 @@
-<p>
-  login works!
-</p>
+<div id="loginForm" class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="margin-left: 25%;">
+        <form role="form" (submit)="loginUser($event)" *ngIf="!isLoggedIn">
+          <h2>Please Login</h2>
+          <hr class="colorgraph">
+          <div class="row">
+      			<div class="col-xs-12 col-sm-12 col-md-12">
+      				<div class="form-group">
+                <label class="sr-only" for="Email">Email</label>
+                <input type="email" class="form-control" id="Email" placeholder="Email" autofocus required />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+      			<div class="col-xs-12 col-sm-6 col-md-12">
+      				<div class="form-group">
+                <label class="sr-only" for="Password">Password</label>
+                <input type="password" class="form-control" id="Password" placeholder="Password" required />
+              </div>
+            </div>
+          </div>
+          <div *ngIf="loginErrorMessage" class="alert alert-danger">{{ loginErrorMessage }} </div>
+          <hr class="colorgraph">
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+              <input type="submit" class="btn btn-primary btn-block btn-lg" tabindex="7" value="Login"/>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

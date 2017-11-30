@@ -9,13 +9,12 @@ var multer = require("multer");
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, './src/assets/')
+    cb(null, './dist/assets/')
   },
   filename: function (req, file, cb) {
     cb(null, file.originalname)
   }
-})
-
+});
 
 // Defining the port to run on
 const port = process.env.PORT || 3000;

@@ -13,6 +13,9 @@ export class MobileInstanceComponent implements OnInit {
   mobileId: string;
   mobileDetails: any;
   errorMsg: any;
+  isAdmin: boolean = false;
+  deleteMobile: boolean = false;
+  mobileDeleted: boolean = false;
 
   constructor(private mobile: MobileService,
               private cart: CartService,
@@ -31,9 +34,13 @@ export class MobileInstanceComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(sessionStorage.getItem('userProfile')) {
+      const userProfile = JSON.parse(sessionStorage.getItem('userProfile'));
+      if(userProfile.profile === 'admin')
+        this.isAdmin = true;
+    }
     this.mobile.getMobileOne(this.mobileId)
         .subscribe(result => {
-          //console.log(result);
           this.mobileDetails = result;
         }),
         error =>  {
@@ -65,4 +72,24 @@ export class MobileInstanceComponent implements OnInit {
           this.errorMsg = 'Unable to add mobile into cart. Please try again';
         };
   }
+
+  confirmDelete(){
+    this.deleteMobile = true;
+  }
+
+  revertDelete(){
+    this.deleteMobile = false;
+  }
+
+  removeMobile()  {
+    this.mobile.deleteMobile(this.mobileDetails._id)
+      .subscribe(result => {
+        console.log(result);
+        this.mobileDeleted = true;
+      }),
+      error =>  {
+        console.log('Error', error);
+        this.errorMsg = 'Unable to delete mobile. Please try again';
+      };
+    }
 }

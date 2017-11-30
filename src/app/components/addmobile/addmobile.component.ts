@@ -10,6 +10,8 @@ import { MobileService } from '../../services/mobile.service';
 })
 export class AddmobileComponent implements OnInit {
 
+  mobileAdded: boolean = false;
+  mobileUpdated: boolean = false;
   newMobile: any;
   errorMsg: any;
   editPage: boolean = false;
@@ -36,7 +38,6 @@ export class AddmobileComponent implements OnInit {
       this.editPage = true;
       this.mobile.getMobileOne(mobileId)
           .subscribe(result => {
-          console.log(mobileId, result);
             this.newMobile = result;
             this.osVersion = this.newMobile.os.split(' ')[1];
             this.newMobile.os = this.newMobile.os.split(' ')[0];
@@ -65,6 +66,7 @@ export class AddmobileComponent implements OnInit {
       this.mobile.addMobile(formData)
         .subscribe(result => {
             console.log("result", result);
+            this.mobileAdded = true;
           },
           error => {
             console.log("error", error);
@@ -75,6 +77,7 @@ export class AddmobileComponent implements OnInit {
       this.mobile.updateMobile(this.newMobile._id, formData)
         .subscribe(result => {
             console.log("Mobile Updated");
+            this.mobileUpdated = true;
           },
           error => {
             console.log("error", error);

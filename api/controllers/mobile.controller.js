@@ -55,10 +55,12 @@ module.exports.mobileGetAll = function(req, res)  {
   var maxCount = 10;
   var sortCond = "-price.value";
   var filterCond = {};
+  filterCond.$and = [];
+  filterCond.$and.push({isdeleted: false});
 
-  if(Object.keys(req.query).length > 0 && !(Object.keys(req.query).length === 1 && req.query.offset)) {
-    filterCond.$and = [];
-  }
+  // if(Object.keys(req.query).length > 0 && !(Object.keys(req.query).length === 1 && req.query.offset)) {
+  //   filterCond.$and = [];
+  // }
 
   if(req.query.os)  {
     if(typeof req.query.os == 'string')
@@ -222,7 +224,7 @@ module.exports.mobileUpdateOne = function(req, res)  {
     var mobileId = req.params.mobileId;
     var updatedMobile = JSON.parse(req.body.mobile);
     if(req.file)
-      mobile.image = req.file.path.substring(req.file.path.lastIndexOf("\\")+1);
+      updatedMobile.image = req.file.path.substring(req.file.path.lastIndexOf("\\")+1);
 
     Mobile
         .findById(mobileId)
@@ -235,7 +237,7 @@ module.exports.mobileUpdateOne = function(req, res)  {
                 response.status = 500;
                 response.message = err;
             }
-            else if(!hotel)   {
+            else if(!mobile)   {
                 response.status = 404;
                 response.message = {"message": "Mobile ID not found"};
             }
@@ -245,7 +247,19 @@ module.exports.mobileUpdateOne = function(req, res)  {
                     .json(response.message);
             }
             else    {
-                mobile = updatedMobile;
+                mobile.name = updatedMobile.name;
+                mobile.brand = updatedMobile.brand;
+                mobile.os = updatedMobile.os;
+                mobile.image = updatedMobile.image;
+                mobile.display.size = updatedMobile.display.size;                mobile.display.resolution = updatedMobile.display.resolution;
+                mobile.memory.ram = updatedMobile.memory.ram;
+                mobile.cpu = updatedMobile.cpu;
+                mobile.gpu = updatedMobile.gpu;
+                mobile.battery.power = updatedMobile.battery.power;
+                mobile.camera.primary[0].imagesensor = updatedMobile.camera.primary[0].imagesensor;
+                mobile.camera.secondary.imagesensor = updatedMobile.camera.secondary.imagesensor;
+                mobile.price.value = updatedMobile.price.value;
+
                 mobile.save(function(err, mobileUpdated)  {
                     if(err) {
                         res

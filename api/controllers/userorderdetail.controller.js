@@ -4,17 +4,18 @@ var User = mongoose.model("User");
 
 module.exports.orderGetOneByUserId = function(req, res)  {
 
+  console.log('user', req.user);
   User
-    .find({email: 'sauravsharma001@gmail.com'})
+    .findOne({email: req.user})
     .exec(function(err, user) {
       if(err) {
           res
             .status(400)
             .json('Invalid User used for uploading data');
       }
-      else{
+      else if(user){
         UserOrderDetail
-           .find({userId: user[0]._id})
+           .find({userId: user._id})
            .sort('-orderdate')
            .exec(function(err, order){
              var response = {
@@ -33,6 +34,11 @@ module.exports.orderGetOneByUserId = function(req, res)  {
                .status(response.status)
                .json(response.message);
            });
+       }
+       else {
+         res
+           .status(400)
+           .json("No User found");
        }
      });
 };
@@ -66,7 +72,7 @@ module.exports.orderAddOneByUserId = function(req, res)  {
 
   var newOrderDetail = req.body;
   User
-    .find({email: 'sauravsharma001@gmail.com'})
+    .find({email: req.user})
     .exec(function(err, user) {
       if(err) {
           res
@@ -74,9 +80,6 @@ module.exports.orderAddOneByUserId = function(req, res)  {
             .json('Invalid User used for uploading data');
       }
       else{
-
-
-
         newOrderDetail.userId = user[0]._id;
           UserOrderDetail
               .create(newOrderDetail,  function (err, orderDetail) {

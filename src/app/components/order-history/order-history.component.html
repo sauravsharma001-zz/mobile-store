@@ -5,7 +5,7 @@
       <div class="card-header">
         <div class="row">
         <div class="col-sm-4">Order Placed: {{ order.orderdate | date: 'MMM dd, yyyy'}}</div>
-        <div class="col-sm-4">Total: ${{ order.totalPrice }}</div>
+        <div class="col-sm-4">Total Price: ${{ order.totalPrice }}</div>
         <div class="col-sm-4">Order # {{ order._id }}</div>
       </div>
       </div>
@@ -25,7 +25,7 @@
                 Quantity: {{ mobile.quantity }}
               </div>
               <div class="col-sm-2">
-                Total price: ${{ mobile.price * mobile.quantity }}
+                Net Price: ${{ mobile.price * mobile.quantity }}
               </div>
             </div>
           </li>

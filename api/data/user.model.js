@@ -1,15 +1,11 @@
 var mongoose = require("mongoose");
 
 var addressSchema = new mongoose.Schema({
-  fullname: {
+  line_1: {
     type: String,
     required: true
   },
-  street: {
-    type: String,
-    required: true
-  },
-  apartment:  {
+  line_2:  {
     type: String
   },
   city: {
@@ -20,15 +16,11 @@ var addressSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  country: {
-    type: String,
-    required: true
-  },
-  zipcode:  {
+  zip:  {
     type: Number,
     required: true
   }
-}, { _id : false });
+});
 
 var userSchema = new mongoose.Schema({
   firstname: {
@@ -39,20 +31,19 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
+  address: addressSchema,
   email:  {
     type: String,
     unique: true,
     required: true
   },
+  phone:  {
+    type: String
+  },
   password: {
     type: String,
     required: true
   },
-  phone:  {
-    type: String
-  },
-  photo: String,
-  address: addressSchema,
   userrole: {
     type: String,
     required: true,

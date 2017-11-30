@@ -22,6 +22,7 @@ export class OrderHistoryComponent implements OnInit {
   ngOnInit() {
     this.order.getOrderAll()
         .subscribe(result => {
+          if(result.length > 0)
             this.orderHistory = result;
         }),
         error =>  {

@@ -12,6 +12,7 @@ import { CartService } from '../../services/cart.service';
 })
 export class MobileComponent implements OnInit {
 
+  isAdmin: boolean = false;
   state: string = 'small';
   page: number = 1; // the current pag
   perPage: number = 9; // how many items we want to show per page
@@ -66,7 +67,11 @@ export class MobileComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    if(sessionStorage.getItem('userProfile')) {
+      const userProfile = JSON.parse(sessionStorage.getItem('userProfile'));
+      if(userProfile.profile === 'admin')
+        this.isAdmin = true;
+    }
     this.route.queryParams.subscribe((params: Params) => {
         if(params.keyword)
           this.searchMobile('keyword', params.keyword);

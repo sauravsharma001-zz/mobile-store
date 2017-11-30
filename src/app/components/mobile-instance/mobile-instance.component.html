@@ -1,4 +1,4 @@
-<div class="container-fluid" id="mobileInstance" *ngIf="mobileDetails">
+<div class="container-fluid" id="mobileInstance" *ngIf="mobileDetails && !deleteMobile && !mobileDeleted">
     <div>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="mobile">Mobile</a></li>
@@ -106,8 +106,11 @@
           </div>
 
         <div class="row" style="padding-top:2%;">
-          <div class="col-lg-6">
-            <a class="btn btn-success" (click)="addToCart()">Add to Cart</a>
+          <div class="col-lg-8">
+            <a *ngIf="mobileDetails.availableQuantity == 0" class="btn btn-secondary">Out of Stock</a>
+            <a *ngIf="mobileDetails.availableQuantity != 0" class="btn btn-success" (click)="addToCart()">Add to Cart</a>
+            <a *ngIf="isAdmin" class="btn btn-info" href="mobile/{{mobileDetails._id}}/edit">Edit Mobile</a>
+            <a *ngIf="isAdmin" class="btn btn-danger" (click)="confirmDelete()">Delete Mobile</a>
           </div>
         </div>
       </div>
@@ -119,6 +122,26 @@
       <div class="col-lg-4"></div>
       <div class="col-lg-4">
         <span class="display-4">Invalid Mobile Id.</span>
+      </div>
+    </div>
+</div>
+<div *ngIf="deleteMobile && !mobileDeleted" class="container-fluid" class="mobileNotFound">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <span class="display-4">Are you Sure?</span><br/>
+        <div style="padding-top: 15%;">
+          <a class="btn btn-success" (click)="revertDelete()">Go back</a>
+          <a class="btn btn-danger" (click)="removeMobile()">Delete Mobile</a>
+        </div>
+      </div>
+    </div>
+</div>
+<div *ngIf="mobileDeleted" class="container-fluid" class="mobileNotFound">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <span class="display-4">Mobile Deleted</span>
       </div>
     </div>
 </div>

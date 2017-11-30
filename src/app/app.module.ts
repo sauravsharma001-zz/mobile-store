@@ -21,6 +21,7 @@ import { AddToCartComponent } from './components/add-to-cart/add-to-cart.compone
 import { CheckoutComponent } from './components/checkout/checkout.component';
 
 import { AuthGuardService } from './services/auth-guard.service';
+import { AdminGuardService } from './services/admin-guard.service';
 import { AuthenticationService } from './services/authentication.service';
 import { MobileService } from './services/mobile.service';
 import { CartService } from './services/cart.service';
@@ -60,11 +61,13 @@ import { OrderHistoryService } from './services/order.history.service';
       },
       {
         path: 'user/orders',
-        component: OrderHistoryComponent
+        component: OrderHistoryComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'user/orders/:orderId',
-        component: OrderHistoryComponent
+        component: OrderHistoryComponent,
+        canActivate: [AuthGuardService]
       },
       {
         path: 'cart',
@@ -92,7 +95,8 @@ import { OrderHistoryService } from './services/order.history.service';
       },
       {
         path: 'mobile/add',
-        component: AddmobileComponent
+        component: AddmobileComponent,
+        canActivate: [AdminGuardService]
       },
       {
         path: 'mobile/:mobileId',
@@ -100,11 +104,12 @@ import { OrderHistoryService } from './services/order.history.service';
       },
       {
         path: 'mobile/:mobileId/edit',
-        component: AddmobileComponent
+        component: AddmobileComponent,
+        canActivate: [AdminGuardService]
       }
     ])
   ],
-  providers: [AuthenticationService, AuthGuardService, MobileService, CartService, OrderHistoryService],
+  providers: [  AuthenticationService, AuthGuardService, AdminGuardService, MobileService, CartService, OrderHistoryService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

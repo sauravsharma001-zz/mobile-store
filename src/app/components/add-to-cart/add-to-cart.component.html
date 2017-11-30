@@ -1,7 +1,7 @@
 <div id="cartMainDiv">
-  <div *ngIf="cartDetails">
+  <div *ngIf="cartDetails && !notLoggedIn">
     <div id="cart">
-      <h1 class="display-4">Order History</h1>
+      <h1 class="display-4">Cart</h1>
       <div class="row">
           <div class="col-lg-6" style="text-align: center;">Mobile</div>
           <div class="col-lg-2">Unit Price</div>
@@ -45,6 +45,16 @@
         <div class="col-lg-4 text-center">
           <span class="display-4">
             Cart Empty. Start <a href="/mobile">Shopping</a>
+          </span>
+        </div>
+      </div>
+  </div>
+  <div *ngIf="notLoggedIn" class="container-fluid" class="orderNotFound">
+      <div class="row">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4 text-center">
+          <span class="display-4">
+            Please, <a href="/login">login</a> or <a href="/register">register</a> before continuing
           </span>
         </div>
       </div>

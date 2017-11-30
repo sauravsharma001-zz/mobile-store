@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Mobile Store</a>
+  <a class="navbar-brand" href="/">Mobile Store</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -21,6 +21,18 @@
         <button type="submit" onclick="window.location='/login';" class="btn btn-outline-success my-2 my-sm-0">Login</button>
         <button type="submit" onclick="window.location='/register';" class="btn btn-outline-success my-2 my-sm-0">Sign Up</button>
     </form>
+    <ul style="margin-left: 2%;" class="navbar-nav" *ngIf="isLoggedIn">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ name }}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <!-- <a class="dropdown-item" href="/user/profile">My Account</a> -->
+          <a class="dropdown-item" href="/user/orders">My Orders</a>
+          <a class="dropdown-item" (click)="logoutUser($event)">Logout</a>
+        </div>
+      </li>
+    </ul>
     <a href="/cart" style="margin-left: 2%;" class="shoppingCart"><img src="assets/icons/shopping-cart.png"/></a>
 
     <!-- <span class="glyphicon glyphicon-shopping-cart"></span> -->
@@ -36,17 +48,6 @@
       <button type="submit" class="btn btn-outline-success my-2 my-sm-0">Login</button><br/>
     </form> -->
 
-    <ul class="navbar-nav" *ngIf="isLoggedIn">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          {{ name }}
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/profile">My Account</a>
-          <a class="dropdown-item" href="/profile">My Orders</a>
-          <a class="dropdown-item" (click)="logoutUser($event)">Logout</a>
-        </div>
-      </li>
-    </ul>
+
   </div>
 </nav>

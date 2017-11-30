@@ -123,6 +123,7 @@
       <div class="container">
           <div class="row" style="padding-left: 15%; padding-top: 2%;">
               <h3 class="a-size-medium a-spacing-base a-spacing-top-base a-color-tertiary a-text-normal">Mobile ({{totalMobileReturned}})</h3>
+              <a *ngIf="isAdmin" style="margin-left: 65%;" class="btn btn-success" href="/mobile/add">Add Mobile</a>
           </div>
       </div>
       <div class="container">
@@ -148,7 +149,8 @@
                     <p class="lead">$ {{ mobile.price.value }}</p>
                 </div>
                 <div class="col-xs-12 col-md-6">
-                    <a class="btn btn-success" (click)="addToCart(i)">Add to cart</a>
+                    <a *ngIf="mobile.availableQuantity == 0" class="btn btn-secondary">Out of Stock</a>
+                    <a *ngIf="mobile.availableQuantity != 0"class="btn btn-success" (click)="addToCart(i)">Add to cart</a>
                 </div>
               </div>
             </div>

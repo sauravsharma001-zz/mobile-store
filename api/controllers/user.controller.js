@@ -4,7 +4,24 @@ var jwt = require("jsonwebtoken");
 var User = mongoose.model("User");
 
 module.exports.register = function(req, res)  {
-  res.status(200).json({"success":true});
+  var userDetails = req.body;
+  userDetails.password = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(10))
+  console.log('req', userDetails);
+
+  User.create(userDetails, function(err, newUser)  {
+    if(err) {
+      console.log('error', err);
+      res
+        .status(400)
+        .json(err);
+    }
+    else  {
+      console.log('res', newUser);
+        res
+          .status(201)
+          .json();
+    }
+  });
 };
 
 module.exports.authenticate = function(req, res, next)  {
@@ -19,7 +36,8 @@ module.exports.authenticate = function(req, res, next)  {
                 .json({"message": "Unauthorized"});
           }
           else {
-            req.user = decoded.username;
+            console.log('dec', decoded);
+            req.user = decoded.name;
             next();
           }
       });
@@ -32,7 +50,7 @@ module.exports.authenticate = function(req, res, next)  {
 };
 
 module.exports.login = function(req, res) {
-  console.log("logging in user");
+
   var email = req.body.email;
   var password = req.body.password;
 
@@ -47,13 +65,11 @@ module.exports.login = function(req, res) {
     }
     else if(user != null || user != undefined){
        if(bcrypt.compareSync(password, user.password) ) {
-        console.log("User found", user);
         var name = user.firstname + ' ' + user.lastname;
-        console.log("Name: ", name);
-        var token = jwt.sign({name: name}, "s3cr3t", {expiresIn: 3600});
+        var token = jwt.sign({name: user.email}, "s3cr3t", {expiresIn: 3600});
         res
           .status(200)
-          .json({success: true, token: token, name: name});
+          .json({success: true, token: token, name: name, email: user.email, userrole: user.userrole});
       }
       else {
         res
@@ -70,5 +86,21 @@ module.exports.login = function(req, res) {
 };
 
 module.exports.emailcheck = function(req, res)  {
+  User.find({
+          email: req.body.email
+      }, function(err, email) {
+          if (err) throw err;
+          console.log('us', email);
+          if (email.length==1) {
+              res
+              .status(200)
+              .json({emailexists : true});
+          }
+          else
+          {
+            res.status(200)
+            .json({emailexists : false});
 
+          }
+    })
 };

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import { OrderHistoryService } from '../../services/order.history.service';
+import { AuthenticationService } from '../../services/authentication.service';
 
 @Component({
   selector: 'app-add-to-cart',
@@ -14,8 +15,10 @@ export class AddToCartComponent implements OnInit {
   cartId: any;
   cartDetails: any;
   productList: any;
+  notLoggedIn: any = false;
 
-  constructor(private cart: CartService,
+  constructor(private user: AuthenticationService,
+              private cart: CartService,
               private order: OrderHistoryService,
               private elem: ElementRef,
               private router: Router,
@@ -71,23 +74,29 @@ export class AddToCartComponent implements OnInit {
   }
 
   checkout()  {
-
-    this.order.addOrderHistory(this.cartDetails)
-    .subscribe(result => {
-        console.log("Added to Order History");
-      },
-      error => {
-        console.log("error", error);
-      });
-
-    this.cart.deleteCart(this.cartId)
+    var params = true;
+    if(sessionStorage.getItem('currentUser'))  {
+      this.notLoggedIn = false;
+      this.order.addOrderHistory(this.cartDetails)
       .subscribe(result => {
-          console.log("Cart Deleted");
+          console.log("Added to Order History");
+          this.cart.deleteCart(this.cartId)
+            .subscribe(result => {
+                console.log("Cart Deleted");
+              },
+              error => {
+                console.log("error", error);
+              });
+              this.router.navigate(['/cart/checkout']);
         },
         error => {
           console.log("error", error);
+          this.errorMsg = error;
         });
 
-    this.router.navigate(['/cart/checkout']);
+    }
+    else  {
+      this.notLoggedIn = true;
+    }
   }
 }

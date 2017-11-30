@@ -1,65 +1,89 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
-    	<form role="form" (submit)="register($event)">
+<div  class="container">
+  <div class="text-center" *ngIf="!regsuccess"  class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3" style="margin-left: 25%;">
+    	<form role="form" (submit)="register($event)" ngNativeValidate>
     		<h2>Please Sign Up</h2>
     		<hr class="colorgraph">
     		<div class="row">
     			<div class="col-xs-12 col-sm-6 col-md-6">
     				<div class="form-group">
-                <input type="text" name="firstname" id="firstname" class="form-control input-lg" placeholder="First Name" tabindex="1">
+                <input type="text" required name="firstname" id="firstname" class="form-control input-lg" placeholder="First Name" tabindex="1">
     				</div>
     			</div>
     			<div class="col-xs-12 col-sm-6 col-md-6">
     				<div class="form-group">
-    					<input type="text" name="lastname" id="lastname" class="form-control input-lg" placeholder="Last Name" tabindex="2">
+    					<input type="text" required name="lastname" id="lastname" class="form-control input-lg" placeholder="Last Name" tabindex="2">
     				</div>
     			</div>
     		</div>
     		<div class="form-group">
-    			<input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="4">
+    			<input type="email" required name="email" id="email" class="form-control input-lg" placeholder="Email Address" tabindex="3" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" (blur)="emailcheck($event)">
+                <span *ngIf="emailExists"> Email Id already registered</span>
     		</div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                    <input type="text" required name="address-line1" id="address-line1" class="form-control input-lg" placeholder="Address Line 1" tabindex="4">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input type="text" required name="address-line2" id="addres-line2" class="form-control input-lg" placeholder="Address Line 2" tabindex="5">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="form-group">
+                    <input type="text" required name="city" id="city" class="form-control input-lg" placeholder="City" tabindex="6">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <input type="text" required name="state" id="state" class="form-control input-lg" placeholder="State" tabindex="7">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="form-group">
+                        <input type="text" required name="zip" id="zip" pattern="(\d{5}([\-]\d{4})?)" class="form-control input-lg" placeholder="Zip" maxlength="5" tabindex="8">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="phone" required name="phone" id="phone" class="form-control input-lg" pattern="[0-9]{10}" maxlength="10" placeholder="Phone" tabindex="9">
+            </div>
     		<div class="row">
     			<div class="col-xs-12 col-sm-6 col-md-6">
     				<div class="form-group">
-    					<input type="password" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5">
+    					<input type="password" required name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" class="form-control input-lg" placeholder="Password" tabindex="10" [(ngModel)]="password" required >
     				</div>
     			</div>
     			<div class="col-xs-12 col-sm-6 col-md-6">
     				<div class="form-group">
-    					<input type="password" name="password_confirmation" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="6">
+    					<input type="password" required name="password_confirmation" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}" id="password_confirmation" class="form-control input-lg" placeholder="Confirm Password" tabindex="11" [(ngModel)]="confirmPassword" (blur)="passwordCheck()">
+                         <span *ngIf="!passwordMatch"> Password mismatch</span>
     				</div>
     			</div>
+            <p>Password must contain 6 or more characters,at least one number, one uppercase and lowercase letter</p>
     		</div>
-        <div class="row">
-    			<div class="col-xs-12 col-sm-6 col-md-6">
-    				<div class="form-group">
-    					<input type="phone" name="phone" id="phone" class="form-control input-lg" placeholder="Phone" tabindex="5">
-    				</div>
-    			</div>
-    			<div class="col-xs-12 col-sm-6 col-md-6">
-    				<div class="form-group">
-    					<input type="file" name="photo" id="photo" class="form-control input-lg" tabindex="6">
-    				</div>
-    			</div>
-    		</div>
-    		<div class="row">
-    			<div class="col-xs-4 col-sm-3 col-md-3">
-    				<span class="button-checkbox">
-    					<button type="button" class="btn" data-color="info" tabindex="7">I Agree</button>
-              <input type="checkbox" name="t_and_c" id="t_and_c" class="hidden" value="1">
-    				</span>
-    			</div>
-    			<div class="col-xs-8 col-sm-9 col-md-9">
-    				 By clicking <strong class="label label-primary">Register</strong>, you agree to the <a href="#" data-toggle="modal" data-target="#t_and_c_m">Terms and Conditions</a> set out by this site, including our Cookie Use.
-    			</div>
-    		</div>
-
     		<hr class="colorgraph">
     		<div class="row">
-    			<div class="col-xs-12 col-md-12"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+    			<div class="col-xs-12 col-md-12"><input type="submit" value="Register" class="btn btn-primary btn-block btn-lg" tabindex="12"></div>
     	  </div>
     	</form>
     </div>
-    </div>
+ </div>
+    <div *ngIf="regsuccess" class="container-fluid" >
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8 text-center">
+          <span class="display-4">
+            Registration successful!
+          </span>
+          <p>
+            <a href="/login" style="font-size: 2em">Login to begin shopping!</a>
+          </p>
+        </div>
+      </div>
+</div>
 </div>

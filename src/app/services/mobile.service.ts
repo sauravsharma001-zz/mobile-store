@@ -32,6 +32,14 @@ export class MobileService {
         .catch((error: any) => Observable.throw(error)); // ...errors if any
   }
 
+  deleteMobile(mobileId) {
+      return this._http.delete(this.url + '/api/mobiles/' + mobileId)
+        .map((res: Response ) => {
+            return res;
+        })
+        .catch((error: any) => Observable.throw(error)); // ...errors if any
+  }
+
   getMobileAll(queryString: any, page: any)  {
     return this._http.get(this.url + '/api/mobiles?offset=' + page + "&" + queryString)
       .map((res: Response ) => {

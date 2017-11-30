@@ -48,11 +48,11 @@ router
 
 router
   .route("/orders")
-  .get(ctrlUserOrderDetails.orderGetOneByUserId)
-  .post(ctrlUserOrderDetails.orderAddOneByUserId);
+  .get(ctrlUsers.authenticate, ctrlUserOrderDetails.orderGetOneByUserId)
+  .post(ctrlUsers.authenticate, ctrlUserOrderDetails.orderAddOneByUserId);
 
 router
   .route("/orders/:orderId")
-  .get(ctrlUserOrderDetails.orderGetOne);
+  .get(ctrlUsers.authenticate, ctrlUserOrderDetails.orderGetOne);
 
 module.exports = router;

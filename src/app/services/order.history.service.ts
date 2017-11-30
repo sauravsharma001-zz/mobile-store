@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Rx';
+import { AuthenticationService } from './authentication.service';
 
 @Injectable()
 export class OrderHistoryService {
@@ -12,10 +13,11 @@ export class OrderHistoryService {
   result: any;
   public token: string;
 
-  constructor(private _http: Http) { }
+  constructor(private _http: Http, private auth: AuthenticationService) { }
 
   getOrderAll()  {
-    return this._http.get(this.url + '/api/orders')
+    let header=new Headers({'Authorization': 'Bearer '+ this.auth.getToken()});
+    return this._http.get(this.url + '/api/orders', {headers: header})
       .map((res: Response ) => {
           return res.json();
       })
@@ -23,7 +25,8 @@ export class OrderHistoryService {
   }
 
   getOrderOne(orderId: any)  {
-    return this._http.get(this.url + '/api/orders/' + orderId)
+    let header=new Headers({'Authorization': 'Bearer '+ this.auth.getToken()});
+    return this._http.get(this.url + '/api/orders/' + orderId, {headers: header})
       .map((res: Response ) => {
           return res.json();
       })
@@ -31,7 +34,8 @@ export class OrderHistoryService {
   }
 
   addOrderHistory(orderHistory: any) {
-      return this._http.post(this.url + '/api/orders', orderHistory )
+      let header=new Headers({'Authorization': 'Bearer '+ this.auth.getToken()});
+      return this._http.post(this.url + '/api/orders', orderHistory , {headers: header})
         .map((res: Response ) => {
             return res;
         })

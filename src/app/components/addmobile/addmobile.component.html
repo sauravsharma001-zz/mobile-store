@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="ro" *ngIf="newMobile">
+  <div class="ro" *ngIf="newMobile && !mobileAdded && !mobileUpdated">
     <div>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="mobile">Mobile</a></li>
@@ -99,6 +99,12 @@
           <input type="file" class="form-control-file" id="mobileImage" name="mobileImage" aria-describedby="fileHelp">
         </div>
       </div>
+      <div class="form-group row">
+        <label for="price" class="col-1 col-form-label">Avaible Quantity</label>
+        <div class="col-4">
+          <input class="form-control" type="number" placeholder="900" name="900" min="100" max="9999" id="price" [(ngModel)]="newMobile.availableQuantity" required>
+        </div>
+      </div>
       <div *ngIf="!editPage" class="form-group row">
         <div class="col-4"></div>
         <button type="submit" class="btn btn-primary">Add Mobile</button>
@@ -109,4 +115,20 @@
       </div>
     </form>
   </div>
+</div>
+<div *ngIf="mobileAdded" class="container-fluid" class="mobileNotFound">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <span class="display-4">Mobile Added</span>
+      </div>
+    </div>
+</div>
+<div *ngIf="mobileUpdated" class="container-fluid" class="mobileNotFound">
+    <div class="row">
+      <div class="col-lg-4"></div>
+      <div class="col-lg-4">
+        <span class="display-4"><a href="/mobile/{{newMobile._id}}">Mobile</a> Updated</span>
+      </div>
+    </div>
 </div>
