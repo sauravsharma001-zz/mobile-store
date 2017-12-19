@@ -97,6 +97,11 @@ var mobileSchema = new mongoose.Schema({
   image:  {
      type: String
   },
+  availableQuantity:  {
+    type: Number,
+    required: true,
+    default: 5
+  },
   isdeleted:  {
     type: Boolean,
     default: false

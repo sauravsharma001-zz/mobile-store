@@ -251,7 +251,8 @@ module.exports.mobileUpdateOne = function(req, res)  {
                 mobile.brand = updatedMobile.brand;
                 mobile.os = updatedMobile.os;
                 mobile.image = updatedMobile.image;
-                mobile.display.size = updatedMobile.display.size;                mobile.display.resolution = updatedMobile.display.resolution;
+                mobile.display.size = updatedMobile.display.size;
+                mobile.display.resolution = updatedMobile.display.resolution;
                 mobile.memory.ram = updatedMobile.memory.ram;
                 mobile.cpu = updatedMobile.cpu;
                 mobile.gpu = updatedMobile.gpu;
@@ -259,6 +260,7 @@ module.exports.mobileUpdateOne = function(req, res)  {
                 mobile.camera.primary[0].imagesensor = updatedMobile.camera.primary[0].imagesensor;
                 mobile.camera.secondary.imagesensor = updatedMobile.camera.secondary.imagesensor;
                 mobile.price.value = updatedMobile.price.value;
+                mobile.availableQuantity = updatedMobile.availableQuantity;
 
                 mobile.save(function(err, mobileUpdated)  {
                     if(err) {

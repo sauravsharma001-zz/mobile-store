@@ -80,18 +80,11 @@ export class AddToCartComponent implements OnInit {
       this.order.addOrderHistory(this.cartDetails)
       .subscribe(result => {
           console.log("Added to Order History");
-          this.cart.deleteCart(this.cartId)
-            .subscribe(result => {
-                console.log("Cart Deleted");
-              },
-              error => {
-                console.log("error", error);
-              });
-              this.router.navigate(['/cart/checkout']);
+          this.router.navigate(['/cart/checkout']);
         },
         error => {
           console.log("error", error);
-          this.errorMsg = error;
+          this.errorMsg = JSON.parse(error).message;
         });
 
     }

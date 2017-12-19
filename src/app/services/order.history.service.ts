@@ -39,6 +39,6 @@ export class OrderHistoryService {
         .map((res: Response ) => {
             return res;
         })
-        .catch((error: any) => Observable.throw(error)); // ...errors if any
+        .catch((error: any) => Observable.throw(error._body)); // ...errors if any
   }
 }

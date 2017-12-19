@@ -28,6 +28,7 @@
             <img style="padding-left:2%;" (click)="removeProduct(i)" width="40px" src="assets/icons/delete.png"/>
           </div>
       </div>
+      <div *ngIf="errorMsg" class="alert alert-danger">{{errorMsg}}</div>
       <hr />
       <div class="cartPrice">
         Grand Total: ${{cartDetails.totalPrice}}

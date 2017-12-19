@@ -36,7 +36,6 @@ module.exports.authenticate = function(req, res, next)  {
                 .json({"message": "Unauthorized"});
           }
           else {
-            console.log('dec', decoded);
             req.user = decoded.name;
             next();
           }

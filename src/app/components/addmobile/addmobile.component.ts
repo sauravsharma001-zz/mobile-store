@@ -73,7 +73,6 @@ export class AddmobileComponent implements OnInit {
           });
     }
     else  {
-      console.log('Update Mobile', this.newMobile);
       this.mobile.updateMobile(this.newMobile._id, formData)
         .subscribe(result => {
             console.log("Mobile Updated");
